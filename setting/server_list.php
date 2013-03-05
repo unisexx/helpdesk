@@ -1,0 +1,101 @@
+<? 
+ //include "include/notifybar.php";
+ //include "include/set_notifybar.php";
+
+  $serversearch = @$_GET['serversearch'];
+  $condition = "WHERE 1 = 1 ";
+  $condition .= $serversearch!='' ? " AND (ServerName like '%".$serversearch."%' OR SystemID IN(select id from system where systemname LIKE '%".$serversearch."%' order by systemname ))" : "";
+                $num_pages= 1;
+                $page= @$_GET['page']!='' ? @$_GET['page'] : 1;
+                  $sql = "select * from server  ".$condition;  
+				  
+				 
+                        $prev_page = $page - 1; 
+                        $next_page = $page + 1; 
+                        $result = mysql_query($sql);
+                        $page_start = ( $per_page * $page) - $per_page; 
+                        $num_rows = mysql_num_rows( $result ); 
+                        
+                  if ( $num_rows <= $per_page )
+                        $num_pages = 1;                   
+                  else if ( ( $num_rows % $per_page ) == 0 )
+                        $num_pages = ( $num_rows / $per_page ); 
+                  else
+                        $num_pages = ( $num_rows / $per_page ) + 1; 
+                $num_pages = ( int ) $num_pages; 
+                $sql .= "  ORDER BY  ID DESC   LIMIT $page_start, $per_page"; 
+                $result = mysql_query($sql) or die("Invalid query: " . mysql_error());    
+?>
+<h3>ตั้งค่า Server</h3>
+<div  >มีทั้งหมด <?=$num_rows;?> รายการ  / <?=$num_pages;?> หน้า <div id="pagenavi" ></div></div>
+          <script src="../js/jquery.paginate.js" type="text/javascript"></script>  
+                    <script type="text/javascript">
+                                $("#pagenavi").paginate({
+                                count     : <?=$num_pages;?>,
+                                start     : <?=$page;?>,
+                                display     : 10,
+                                border          : false,
+                                text_color        : '#888',
+                                background_color      : '#EEE', 
+                                text_hover_color      : 'black',
+                                background_hover_color  : '#CFCFCF',
+                                images          : false,
+                                mouse         : 'press',
+                                                onChange          : function(page){   
+												
+ var url='<?php echo $_SERVER['PHP_SELF'].( ! empty($_SERVER['QUERY_STRING']) ? '?'.$_SERVER['QUERY_STRING']:'')?>';
+			<?php  if(!empty($_SERVER['QUERY_STRING'])){ ?>
+					url=url+'&act=serverlist&page='+page;											   
+			<?php }else{ ?>
+					url=url+'?act=serverlist&page='+page;
+		   <?php } ?>												
+												                  
+                                                        
+                                                            $(location).attr('href',url);
+                                                          }
+                            });
+                    </script>      
+<form method="get">
+<div id="search">
+<span> ชื่อเซิร์ฟเวอร์/ชื่อระบบงาน
+<input type="hidden" name="act" id="act" value="serverlist">
+<input name= "serversearch" type="text" id= "serversearch" size="35" value="<?=$serversearch;?>"></span>
+<span>
+<input name="" type="submit" value="search" class="btn_search" />
+</span>
+</div>
+</form>
+<div id="btnBox"><input type="button" value="เพิ่มรายการ"  class="btn_add" onclick="document.location.href='setting.php?act=serverform'"/></div>
+<table class="tblist">
+<tr>
+<th>ลำดับ</th>
+<th>ชื่อระบบงาน</th>
+<th>รายละเอียด</th>
+<th>Server Name(hostname)</th>
+<th>Network Address</th>
+<th>Disk Size   </th>
+<th>ลบ</th>
+</tr>
+<?
+  $i = ($page -1)* $per_page;
+  while($row=mysql_fetch_array($result)){
+	 $i++;
+?>
+<tr  style="cursor:pointer;">
+  <td onclick="window.location='setting.php?act=serverform&id=<?=$row['ID'];?>';" ><?=$i;?></td>
+  <td onclick="window.location='setting.php?act=serverform&id=<?=$row['ID'];?>';" >
+  <?
+    $system = GetData("system",$row['SystemID']);
+    echo $system['SystemName'];
+  ?>
+  </td>
+  <td onclick="window.location='setting.php?act=serverform&id=<?=$row['ID'];?>';" >
+  <img src="images/info.png" width="24" height="24" class="vtip" title="<?php echo $row['Note'];?>"/>
+  </td>
+  <td onclick="window.location='setting.php?act=serverform&id=<?=$row['ID'];?>';" ><?=$row['ServerName'];?></td>
+  <td onclick="window.location='setting.php?act=serverform&id=<?=$row['ID'];?>';" ><?=$row['NetworkAddress'];?></td>
+  <td onclick="window.location='setting.php?act=serverform&id=<?=$row['ID'];?>';" ><?=$row['DiskSize'];?></td>
+  <td><input type="submit" name="delbutton" id="delbutton" value="X" class="btn_delete" onclick="ConfirmDelete('setting.php?type=server&act=delete&id=<?=$row['ID'];?>&chk_del=<?php echo $item_7['CanDelete'];?>');" /></td>
+</tr>
+<? } ?>
+</table>

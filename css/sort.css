@@ -1,0 +1,21 @@
+.sortable {width:98%; border:1px solid #ccc; margin-left:1%;}
+.sortable th {text-align:left; color:#333; border:1px solid #ccc; border-right:none; background-color:#FCFCFC}
+.sortable th h3 {font-size:15px; padding:6px 8px 8px}
+.sortable td {padding:6px 6px 6px; border-bottom:1px solid #c6d5e1; border-right:1px solid #c6d5e1; font-size:13px; color:#333;}
+.sortable .head h3 {background:url(../images/sort.gif) 7px center no-repeat; cursor:pointer; padding-left:18px}
+.sortable .desc, .sortable .asc {background:url(../images/header-selected-bg2.gif)}
+.sortable .desc h3 {background:url(../images/desc.gif) 7px center no-repeat; cursor:pointer; padding-left:18px}
+.sortable .asc h3 {background:url(../images/asc.gif) 7px  center no-repeat; cursor:pointer; padding-left:18px}
+.sortable .head:hover, .sortable .desc:hover, .sortable .asc:hover {color:#BE1778}
+.sortable .evenrow td {background:#fff}
+.sortable .oddrow td {background:#E9F7FE}
+.sortable td.evenselected {background:#}
+.sortable td.oddselected {background:#}
+
+#controls {width:100%; margin:0 auto; height:20px; padding:10px 15px 0 15px;}
+#perpage {float:left; width:30%}
+#perpage select {float:left; font-size:11px}
+#perpage span {float:left; margin:2px 0 0 5px}
+#navigation {float:left; width:40%; text-align:center}
+#navigation img {cursor:pointer}
+#text {float:left; width:30%; text-align:right; margin-top:2px}

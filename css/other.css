@@ -1,0 +1,164 @@
+.gray { color:#707070}
+
+.btn_print{
+width:25px;
+height:24px;
+border: none;
+background: transparent url(../images/btn_print.gif) no-repeat center;
+overflow: hidden;
+text-indent: -999px;
+line-height: 0px;
+display: inline-block;
+color: #a63606;
+cursor: pointer; /* hand-shaped cursor */
+cursor: hand; /* for IE 5.x */
+margin-top:5px;
+}
+
+.btn_print2{
+width:118px;
+height:30px;
+border: none;
+background: transparent url(../images/btn_print.png) no-repeat center;
+overflow: hidden;
+text-indent: -999px;
+line-height: 0px;
+display: inline;
+color: #a63606;
+cursor: pointer; /* hand-shaped cursor */
+cursor: hand; /* for IE 5.x */
+margin-top:5px;
+}
+
+.btn_save{
+width:118px;
+height:30px;
+border: none;
+background: transparent url(../images/btn_save.png) no-repeat center;
+overflow: hidden;
+text-indent: -999px;
+line-height: 0px;
+display: inline;
+color: #a63606;
+cursor: pointer; /* hand-shaped cursor */
+cursor: hand; /* for IE 5.x */
+margin-top:5px;
+}
+
+.btn_back{
+width:118px;
+height:30px;
+border: none;
+background: transparent url(../images/btn_back.png) no-repeat center;
+overflow: hidden;
+text-indent: -999px;
+line-height: 0px;
+display: inline;
+color: #a63606;
+cursor: pointer; /* hand-shaped cursor */
+cursor: hand; /* for IE 5.x */
+}
+
+.btn_add{
+width:118px;
+height:30px;
+border: none;
+background: transparent url(../images/btn_add.png) no-repeat center;
+overflow: hidden;
+text-indent: -999px;
+line-height: 0px;
+display:inline;
+color: #a63606;
+cursor: pointer; /* hand-shaped cursor */
+cursor: hand; /* for IE 5.x */
+}
+
+.btn_delete{
+width:24px;
+height:26px;
+border: none;
+background: transparent url(../images/btn_delete.png) no-repeat center;
+overflow: hidden;
+text-indent: -999px;
+line-height: 0px;
+display:inline;
+color: #a63606;
+cursor: pointer; /* hand-shaped cursor */
+cursor: hand; /* for IE 5.x */
+}
+
+.btn_search{
+width:63px;
+height:22px;
+border: none;
+background: transparent url(../images/btn_search.png) no-repeat center;
+overflow: hidden;
+text-indent: -999px;
+line-height: 0px;
+display:inline;
+color: #a63606;
+cursor: pointer; /* hand-shaped cursor */
+cursor: hand; /* for IE 5.x */
+}
+.a_search {
+display:inline-block;
+text-align:center;
+vertical-align:middle;
+background: url(../images/btn_search.png) no-repeat center;
+width:63px;
+height:22px;
+cursor: pointer; /* hand-shaped cursor */
+cursor: hand; /* for IE 5.x */
+}
+
+.btn, a:link.btn, a:visited.btn{
+    padding: 1px 8px;
+    text-decoration: none;
+    outline: none;
+    color: #252525;
+    font-size: 12px;
+	font-weight:normal;
+    background-image: url(../images/btn_bg.gif);
+    background-repeat: repeat-x;
+    border: solid #acacac 1px;
+    cursor: pointer; 
+    cursor: hand; 
+	position:relative;
+}
+.btn:hover, a:hover.btn{
+    text-decoration: none;
+    outline: none;
+    color: #000;
+    border: solid black 1px;
+}
+.btn_login{
+    border: none;
+	background:url(../images/button.jpg) no-repeat center;
+	width:110px;
+	height:26px;
+	cursor: pointer; /* hand-shaped cursor */
+	cursor: hand; /* for IE 5.x */
+	
+
+}
+.text {
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #606;
+	text-align: center;
+	
+	
+}
+.text p{
+	margin-bottom:20px;
+}
+#login {
+width:100%;
+height:100%;
+margin-top:15%;
+margin-left:auto;
+margin-right:auto;
+
+
+} 

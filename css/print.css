@@ -1,0 +1,85 @@
+@charset "utf-8";
+/* CSS Document */
+body,table { color: black; background: white; font-size:12px;}
+
+label { font-weight:700; padding-right:10px;}
+span { padding:0 5px; margin-right:10px; display:inline-block;}   
+span.underline {border-bottom:1px solid #999; }
+#head { display: none;}
+#page { width:800px; border: 0; padding: 0; float: none !important;height:1300px;clear:both;position:relative;}
+#page_head{background:url(../images/fd_head.gif) no-repeat top center; width:730px; height:119px;}
+#title { text-align:center; font-size:14pt; font-weight:700; padding:10px 0;height:50px;width:800px;}
+.headtitle { font-size:13pt; font-weight:700;}
+.botline {border-bottom:1px dashed #999; padding:10px 0;}
+.clear{clear:both;}	
+a:link, a:visited {
+   color: #520;
+   background: transparent;
+   font-weight: bold;
+   text-decoration: underline;
+   }
+   
+.tbfilename
+{
+	background: #fff;
+	margin: 0;
+	width:90%;
+	/*height:100%;*/
+	border-collapse: collapse;
+	text-align: left;
+}
+.tbfilename th
+{
+	font-size: 12px;
+	font-weight:700;
+	padding: 10px 5px;
+	border-top: 1px solid #666;
+	border-bottom: 1px solid #666;
+	border-left: 1px solid #666;
+	border-right: 1px solid #666;
+	
+}
+
+.tbfilename td
+{
+	color:#333;
+	padding: 4px 3px;
+	height:25px;
+	border-top: 1px solid #666;
+	border-bottom: 1px solid #666;
+	border-left: 1px solid #666;
+	border-right: 1px solid #666;
+}
+
+.tb
+{
+	background: #fff;
+	margin: 0;
+	
+	/*height:100%;*/
+	border-collapse: collapse;
+	text-align: left;
+}
+
+.tb td
+{
+	color:#333;
+	padding: 4px 3px;
+	height:25px;
+	
+}
+
+.list_detail{
+	list-style-type:none;
+	padding-left:0px;
+	margin-left:0px;
+	margin-bottom:5px;
+	line-height:30px;
+}
+.list_detail label{
+	font-weight:normal;
+	display:inline-block;
+	width:100px;
+	text-align:right;
+}
+
