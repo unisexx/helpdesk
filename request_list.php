@@ -30,16 +30,20 @@
 				switch($_SESSION['usertype'])
 				{
 					case "1": 	 //ผู้รับผิดชอบ
+						echo "request_list/form.php";
 						include "request_list/form.php";
 						break;
 					case "2": 	//ผู้ประสานงาน
+						echo "request_list/form_coordinator.php";
 						include "request_list/form_coordinator.php";
 						break;
 					case "4":	//ผู้ใช้งาน
+						echo "request_list/form_user.php";
 						include "request_list/form_user.php";
 						break;
 					case "3":  //เจ้าของระบบ
 						//include "request_list/form_coordinator.php";
+						echo "request_list/form_own.php";
 						include "request_list/form_own.php";
 						break;
 				}

@@ -198,6 +198,7 @@ if(@$_POST['id']==""){
 				$field .=",new_date,operation_date,complete_date";
 				$field .=",orderid,responsibleid,coordinatorid,systemid";
 				$field .=",service,code,send_date,active_date,system_success,response_success,ownid";
+				$field .=",operation_detail,result,test,future,admin_id,rso_name,rso_date,rso_channel";
 				
 				
 	switch($_SESSION['usertype'])
@@ -210,6 +211,7 @@ if(@$_POST['id']==""){
 				$val .=",'".$_POST['orderid']."','".$_POST['responsibleid']."','".$_POST['coordinatorid']."','".$_POST['systemid']."','".@$_POST['service']."'";
 				$val .=",'".$_POST['code']."','".@$_POST['send_date']."','".@$_POST['active_date']."'";
 				$val .=",'".@$_POST['system_success']."','".@$_POST['response_success']."',''";
+				$val .=",'".$_POST['operation_detail']."','".$_POST['result']."','".@$_POST['test']."','".@$_POST['future'].",'".@$_POST['admin_id'].",'".@$_POST['rso_name'].",'".@$_POST['rso_date'].",'".@$_POST['rso_channel']."'";
 				break;
 			
 			case "2": 	

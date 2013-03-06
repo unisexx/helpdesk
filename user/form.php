@@ -287,11 +287,11 @@ function CheckForValidate(pUserGroup)
 <tr>
   <th>ประเภทผู้ใช้งาน  <span class="Txt_red_12">*</span></th>
   <td><input type="radio" name="UserType" id="UserType" value="1" <? if($row['usertypeid']=='1')echo "checked";?>/>
-    ผู้รับผิดชอบ 
+    ผู้พัฒนา / MA 
      <input type="radio" name="UserType" id="UserType" value="2" <? if($row['usertypeid']=='2')echo "checked";?>/>
     ผู้ประสานงาน
     <input type="radio" name="UserType" id="UserType" value="3" <? if($row['usertypeid']=='3')echo "checked";?>/>
-    เจ้าของระบบ
+    เจ้าหน้าที่ / ผู้ดูแลระบบ
     <input type="radio" name="UserType" id="UserType" value="4" <? if($row['usertypeid']=='4')echo "checked";?>/>
     ผู้ใช้งาน</td>
 </tr>

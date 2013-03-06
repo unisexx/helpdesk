@@ -1,15 +1,6 @@
 <!-- ผู้รับผิดชอบ -->
-
-<script>	
-		!window.jQuery && document.write('<script src="js/fancybox/jquery-1.4.3.min.js"><\/script>');		
-</script>
-<script type="text/javascript" src="js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
-<script type="text/javascript" src="js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
-<script type="text/javascript" src="js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>	
-<link rel="stylesheet" type="text/css" href="js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />	
 <style type="text/css">
 #frmedit label.error{ color:red; }
-
 </style>
 
 <script type="text/javascript">
@@ -121,8 +112,21 @@ $(document).ready(function() {
      $("#frmedit input[name='mileage']").each(function() {
        $(this).rules("add", { required: true });
     }); 
-
-    
+	
+	var content_id = "<?php echo $_GET['id']?>";
+	if(content_id == ""){
+		$('.detail,.result,.test,.future').hide();
+	}else{
+		$('.detail,.result,.test,.future').show();
+	}
+	
+    $('select[name=status]').change(function(){
+    	if($(this).val() == 1){
+    		$('.detail,.result,.test,.future').show();
+    	}else{
+    		$('.detail,.result,.test,.future').hide();
+    	}
+    });
 });
 </script>
 
@@ -237,7 +241,7 @@ if (isset($_GET['id']))
   <?php }else{ ?>
   <img src="images/new.png" width="32" height="32" title="รายการใหม่" align="absmiddle"/>
   <img src="images/process.png" width="32" height="32" title="กำลังดำเนินการ" align="absmiddle"/>
-  <img src="images/send.png" width="32" height="32" title="ส่งต่อการดำเนินการ" align="absmiddle"/>
+  <img src="images/send.png" width="32" height="32" title="แจ้งกลับแล้ว" align="absmiddle"/>
   <img src="images/complete.png" width="32" height="32" title="เรียบร้อย"  align="absmiddle"/>
   <?php } ?>
 
@@ -298,7 +302,8 @@ if (isset($_GET['id']))
 	<th>ช่องทางการแจ้ง</th>
     <td>
     	<input type="radio" name="service" value="sys"  checked="checked" /> ระบบ
-		<input type="radio" name="service" value="tel"   <?php if($rs['service']=="tel"){echo "checked";}?>/> โทรศัพท์       
+		<input type="radio" name="service" value="tel"   <?php if($rs['service']=="tel"){echo "checked";}?>/> โทรศัพท์
+		<input type="radio" name="service" value="email" <?php if($rs['service']=="email"){echo "checked";}?>/> อีเมล์
         <input type="radio" name="service" value="other" <?php if($rs['service']=="other"){echo "checked";}?>/> อื่นๆ
     </td>
 </tr>
@@ -383,7 +388,7 @@ if(@$_GET['id']!=""){
   <?php endif;?>
 
   </td>
-<tr>
+<!-- <tr>
 	<th>ชื่อผู้ประสานงาน</th>
     <td>
 	<?php if($rs['coordinatorid']!=0):?>
@@ -396,10 +401,10 @@ if(@$_GET['id']!=""){
          <input type="hidden" name="coordinatorid"  />
   	<?php endif;?>
     </td>
-</tr> 
+</tr>  -->
 </tr>
 <tr>
-  <th>ชื่อผู้รับผิดชอบ </th>    
+  <th>ผู้พัฒนา/MA</th>    
   <td> 
   
   	<?php if($rs['responsibleid']!=0 || $rs['responsibleid']!="" ):?>
@@ -418,24 +423,51 @@ if(@$_GET['id']!=""){
   </td>
 </tr>
 <tr>
+	<th>เจ้าหน้าที่/ผู้ดูแลระบบ</th>
+	<td></td>
+</tr>
+<!-- <tr>
   <th valign="top">ส่งให้เจ้าของระบบ</th>
   <td>
   	<input type="radio" name="chk_send" id="checkbox"  value="" checked="checked" /> ไม่ส่งต่อ
     <input type="radio" name="chk_send" id="checkbox"  value="send"      <?php echo ($rs['chk_send']=='send')?"checked":""; ?> /> ส่งต่อ กรณีงานเดี่ยว
     <input type="radio" name="chk_send" id="checkbox"  value="send_wait" <?php echo ($rs['chk_send']=='send_wait')?"checked":""; ?> /> ส่งต่อ กรณีเป็นงานร่วม
-    
   </td>
-</tr>
-<tr>
+</tr> -->
+<!-- <tr>
   <th valign="top">รายละเอียดการส่งต่อ</th>
   <td><textarea name="send_note" cols="72" rows="5" id="textarea5"><?php echo $rs['send_note'];?></textarea></td>
-</tr>
-<tr>
+</tr> -->
+<!-- <tr>
   <th valign="top">เจ้าของระบบ</th>
   <td>
   <input type="checkbox" name="system_success" value="1" <?php  echo($rs['system_success']=="1")? "checked":"";?> disabled="disabled" /> เสร็จ</td>
+</tr> -->
+<tr class="detail">
+	<th>รายละเอียดการดำเนินงาน</th>
+	<td><textarea name="Name" rows="5" cols="72"></textarea></td>
 </tr>
-
+<tr class="result">
+	<th>ผลการดำเนินงาน</th>
+	<td><textarea name="Name" rows="5" cols="72"></textarea></td>
+</tr>
+<tr class="test">
+	<th>ผลการทดสอบ</th>
+	<td><textarea name="Name" rows="5" cols="72"></textarea></td>
+</tr>
+<tr class="future">
+	<th>ข้อเสนอแนะในการนำไปสู่การแก้ปัญหาในอนาคต</th>
+	<td><textarea name="Name" rows="5" cols="72"></textarea></td>
+</tr>
+<tr>
+	<th>แจ้งผลการดำเนินงาน</th>
+	<td>
+		ชื่อ - สกุล <input type='text' name='' style="width:260px;"> วันที่แจ้ง <input type='text' name=''><br>
+		ช่องทางแจ้ง <input type="radio" name="service" value="tel"   <?php if($rs['service']=="tel"){echo "checked";}?>/> โทรศัพท์
+		<input type="radio" name="service" value="email" <?php if($rs['service']=="email"){echo "checked";}?>/> อีเมล์
+        <input type="radio" name="service" value="other" <?php if($rs['service']=="other"){echo "checked";}?>/> อื่นๆ
+	</td>
+</tr>
 <tr>
   <th valign="top">ผู้รับผิดชอบ</th>
   <td><input type="checkbox" name="response_success"value="1" <?php  echo ($rs['response_success']=="1")? "checked":"";?>/> เสร็จ</td>

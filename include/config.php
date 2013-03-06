@@ -4,10 +4,10 @@ $title = "ระบบแจ้งปัญหาการใช้ระบบ�
 $bf_title = "";
 $footer = "&copy; Copyright  Co., Ltd.";
 $per_page = 10;
-$link = mysql_connect("127.0.0.1","root","1234");
+$link = mysql_connect("localhost","root","1234");
 //$port=(strlen($_SERVER['SERVER_PORT'])==4)?":".$_SERVER['SERVER_PORT']:"";
 //$host=$_SERVER['SERVER_NAME'].$port.$_SERVER['REQUEST_URI'];
-$host="http://127.0.0.1/helpdesk_news/";
+$host="http://localhost/helpdesk/";
 $hd="Location:".$host;
 
 
@@ -19,9 +19,9 @@ $alert_export="ไม่สามารถพิมพ์ข้อมูลไ�
 
 function db_connect()
 {
-	$link = mysql_connect("127.0.0.1","root","1234");
+	$link = mysql_connect("localhost","root","1234");
 	if(!$link){echo "error";}
-	mysql_select_db("c1fd_crm_new",$link);
+	mysql_select_db("helpdesk",$link);
 	$charset = "SET NAMES 'utf8'";
 	mysql_query($charset);
 }
@@ -29,5 +29,4 @@ function db_close()
 {
 	mysql_close();
 }
-
 ?>
