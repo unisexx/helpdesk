@@ -80,6 +80,13 @@ function DateTH2DB($date){
 	    return $y.'-'.$m.'-'.$d;
 	
 }
+function Date2DB($Dt){
+	if(($Dt!="")&&($Dt != '0000-00-00')){
+		@list($date,$time) = explode(" ",$Dt);
+		list($d,$m,$y) = explode("/",$date);
+		return ($y-543)."-".$m."-".$d;
+	}else{ return $Dt; }
+}
 function GetProblemType($id){
 	
 	$result=mysql_query("select problemname FROM problemtype where id=".$id);	

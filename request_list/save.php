@@ -200,7 +200,7 @@ if(@$_POST['id']==""){
 				$field .=",service,code,send_date,active_date,system_success,response_success,ownid";
 				$field .=",operation_detail,result,test,future,admin_id,rso_name,rso_date,rso_channel";
 				
-				
+	echo $_SESSION['usertype'];
 	switch($_SESSION['usertype'])
 		{
 			case "1": 	
@@ -211,7 +211,7 @@ if(@$_POST['id']==""){
 				$val .=",'".$_POST['orderid']."','".$_POST['responsibleid']."','".$_POST['coordinatorid']."','".$_POST['systemid']."','".@$_POST['service']."'";
 				$val .=",'".$_POST['code']."','".@$_POST['send_date']."','".@$_POST['active_date']."'";
 				$val .=",'".@$_POST['system_success']."','".@$_POST['response_success']."',''";
-				$val .=",'".$_POST['operation_detail']."','".$_POST['result']."','".@$_POST['test']."','".@$_POST['future'].",'".@$_POST['admin_id'].",'".@$_POST['rso_name'].",'".@$_POST['rso_date'].",'".@$_POST['rso_channel']."'";
+				$val .=",'".@$_POST['operation_detail']."','".@$_POST['result']."','".@$_POST['test']."','".@$_POST['future'].",'".@$_POST['admin_id'].",'".@$_POST['rso_name'].",'".@$_POST['rso_date'].",'".@$_POST['rso_channel']."'";
 				break;
 			
 			case "2": 	
@@ -331,6 +331,14 @@ else{
 	$val .=",system_success='".@$_POST['system_success']."'";
 	$val .=",response_success='".@$_POST['response_success']."'";
 	$val .=",ownid='".@$_POST['ownid']."'";
+	$val .=",operation_detail='".@$_POST['operation_detail']."'";
+	$val .=",result='".@$_POST['result']."'";
+	$val .=",test='".@$_POST['test']."'";
+	$val .=",future='".@$_POST['future']."'";
+	$val .=",admin_id='".@$_POST['admin_id']."'";
+	$val .=",rso_name='".@$_POST['rso_name']."'";
+	$val .=",rso_date='".Date2DB(@$_POST['rso_date'])."'";
+	$val .=",rso_channel='".@$_POST['rso_channel']."'";
 	$sql="UPDATE request_lists SET ".$val." WHERE id=".$_POST['id'];	
 	//print($sql);exit;
 	mysql_query($sql)or die("Error update :".mysql_error());

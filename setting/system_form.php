@@ -1,11 +1,9 @@
-
 <style type="text/css">
-
 .commentForm label { color:red; }
 .commentForm label.error{ color:red; }
+.admin-row,.ma-row{padding:5px 0;}
 </style>
 <script type="text/javascript">
-
 $().ready(function() {
   $("#frmSystem").validate({
     rules: {
@@ -22,12 +20,31 @@ $().ready(function() {
      }
   });  
 });
+
+$(document).ready(function(){
+	$('.add-admin').click(function(){
+		var element = $('.admin-row:first').clone();
+		element.find('input').val('');
+		element.appendTo('.admin-col');
+	});
+	
+	$('.add-ma').click(function(){
+		var element = $('.ma-row:first').clone();
+		element.find('input').val('');
+		element.appendTo('.ma-col');
+	});
+});
 </script>
 
 <?
 
 //if(@$_GET['id']!='')$row = GetData('System',@$_GET['id']);
-if(@$_GET['id']!='')$row = GetData('system',@$_GET['id']);
+if(@$_GET['id']!=''){
+	$row = GetData('system',@$_GET['id']);
+	// เรียก ma_user
+	$sql = "SELECT * FROM ma_user where system_id = ".@$_GET['id'];
+	$result_ma = mysql_query($sql) or die("Invalid query: " . mysql_error());
+}
 ?>
 <h3>ตั้งค่า ชื่อระบบงาน (เพิ่ม / แก้ไข)</h3>
 <form name="frmSystem" id="frmSystem" class="commentForm" enctype="multipart/form-data" action="setting.php?act=query&type=System&id=<?php echo @$_GET['id'];?>&chk_edit=<?php echo $item_6['CanEdit']; ?>&chk_add=<?php echo $item_6['CanAdd']; ?>" method="post">
@@ -41,6 +58,37 @@ if(@$_GET['id']!='')$row = GetData('system',@$_GET['id']);
 <tr>
   <th>ชื่อระบบงาน <span class="Txt_red_12">*</span></th>
   <td><input name="txtSystem" type="text" id="txtSystem" value="<?=@$row['SystemName'];?>" size="50" /></td>
+</tr>
+<tr>
+	<th>ผู้พัฒนา/MA</th>
+	<td class="ma-col">
+		<input class="add-ma" type="button" value=" เพิ่มผู้พัฒนา/MA "><br>
+		<?php while($ma=mysql_fetch_array($result_ma)):?>
+			<div class="ma-row">
+				ชื่อ-สกุล <input type="text" name="m_name[]" value="<?php echo $ma['m_name']?>"> 
+				เบอร์ติดต่อ <input type="text" name="m_tel[]" value="<?php echo $ma['m_tel']?>"> 
+				อีเมล์ <input type="text" name="m_email[]" value="<?php echo $ma['m_email']?>"> 
+				ชื่อบริษัท <input type="text" name="m_company[]" value="<?php echo $ma['m_company']?>"> 
+				เบอร์ติดต่อ <input type="text" name="m_ctel[]" value="<?php echo $ma['m_ctel']?>">
+				<input type="hidden" name="id[]" value="<?php echo $ma['id']?>">
+			</div>
+		<?php endwhile;?>
+		<div class="ma-row">
+			ชื่อ-สกุล <input type="text" name="m_name[]" value=""> 
+			เบอร์ติดต่อ <input type="text" name="m_tel[]" value=""> 
+			อีเมล์ <input type="text" name="m_email[]" value=""> 
+			ชื่อบริษัท <input type="text" name="m_company[]"> 
+			เบอร์ติดต่อ <input type="text" name="m_ctel[]">
+			<input type="hidden" name="id[]" value="">
+		</div>
+	</td>
+</tr>
+<tr>
+	<th>เจ้าหน้าที่/ผู้ดูแลระบบ</th>
+	<td class="admin-col">
+		<input class="add-admin" type="button" value=" เพิ่มเจ้าหน้าที่/ผู้ดูแลระบบ "><br>
+		<div class="admin-row">ชื่อ-สกุล <input type="text" name="a_name[]" value=""> เบอร์ติดต่อ <input type="text" name="a_tel[]" value=""> อีเมล์ <input type="text" name="a_email[]" value=""> ชื่อบริษัท <input type="text" name="a_company[]"> เบอร์ติดต่อ <input type="text" name="a_ctel[]"></div>
+	</td>
 </tr>
 </table>
 <div id="boxbtnadd">

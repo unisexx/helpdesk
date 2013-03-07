@@ -457,6 +457,8 @@ if($_GET['act']=='delete')
 { 
 	if($_GET['chk_del']=="1"){
 	  mysql_query("DELETE FROM system WHERE ID=".$_GET['id']);
+	  // delete ma_user
+	  mysql_query("DELETE FROM ma_user WHERE system_id=".$_GET['id']);
 	  
 	}else{Alert($GLOBALS["alert_del"]);}
 	  ReDirect('setting.php?act=systemlist','top');
@@ -467,13 +469,35 @@ else
   {
     if($_GET['chk_edit']=="1"){
 		mysql_query("UPDATE system SET SystemName='".$_POST['txtSystem']."' WHERE ID=".$_GET['id'])  or die("Error System:".mysql_error());
+		//update ma_user
+		foreach($_POST['m_name'] as $key => $item){
+			if($item){
+				if($_POST['id'][$key] != ""){
+					mysql_query ("UPDATE ma_user SET m_name='".$item."', m_tel='".$_POST['m_tel'][$key]."', m_email='".$_POST['m_email'][$key]."', m_company='".$_POST['m_company'][$key]."', m_ctel='".$_POST['m_ctel'][$key]."' WHERE ID=".$_POST['id'][$key])  or die("Error System:".mysql_error());
+				}else{
+					mysql_query ("INSERT INTO ma_user( system_id, m_name, m_tel, m_email, m_company,m_ctel) VALUES( ".$_GET['id'].", '".$item."', '".$_POST['m_tel'][$key]."', '".$_POST['m_email'][$key]."', '".$_POST['m_company'][$key]."', '".$_POST['m_ctel'][$key]."')") or die ("Error System:".mysql_error());
+				}
+				
+			}
+		}
 		
 	}else{Alert($GLOBALS["alert_edit"]);}
 	   ReDirect('setting.php?act=systemlist','top');
   }else{
   	if($_GET['chk_add']=="1"){
 		 mysql_query ("INSERT INTO system( Code, SystemName) VALUES( '', '".$_POST['txtSystem']."')") or die ("Error System:".mysql_error());
-
+		
+		// เพิ่ม ma_user
+		// หา max id จากเทเบิ้ล system
+		$sql = "SELECT max(ID) FROM system";
+		$rs = mysql_query($sql);
+		$row = mysql_fetch_array($rs);
+		
+		foreach($_POST['m_name'] as $key => $item){
+			if($item){
+				mysql_query ("INSERT INTO ma_user( system_id, m_name, m_tel, m_email, m_company,m_ctel) VALUES( ".$row['max(ID)'].", '".$item."', '".$_POST['m_tel'][$key]."', '".$_POST['m_email'][$key]."', '".$_POST['m_company'][$key]."', '".$_POST['m_ctel'][$key]."')") or die ("Error System:".mysql_error());
+			}
+		}
 		
 		$sql = "SELECT ID FROM system WHERE SystemName='".$_POST['txtSystem']."' ";
 		$result = mysql_query($sql);

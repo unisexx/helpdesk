@@ -22,7 +22,11 @@
 <script type="text/javascript" src="js/jQuery-Notify-bar/jquery.notifyBar.js"></script>
 <script type="text/javascript" src="js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
 <script type="text/javascript" src="js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
-
+<script type="text/javascript">
+$(document).ready(function(){
+	$(function(){	$("input.datepicker").date_input();	});
+});	
+</script>
 <?php
 	if(!isset($_SESSION["id"])){
 		ReDirect('index.php','self');

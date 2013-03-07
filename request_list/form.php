@@ -1,3 +1,40 @@
+<?php
+db_connect(); 
+if (isset($_GET['id']))
+{
+	//$id=$_GET['id'];
+	$rs=GetData("request_lists",$_GET['id']);
+	$dd="select new_date,operation_date,send_date,complete_date from request_lists where id=".$rs['id'];	
+	$result=mysql_query($dd) or die("datediff :".mysql_error());
+	$item=mysql_fetch_assoc($result);
+	
+	
+	
+}else{
+	$rs['id']="";
+	$rs['code']="";
+	$rs['status']="";
+	$rs['problemtype']="";
+	$rs['title']="";
+	$rs['send_note']="";
+	$rs['system_note']="";
+	$rs['coordinator_note']="";
+	$rs['response_note']="";
+	$rs['orderid']="";
+	$rs['responsibleid']="";
+	$rs['chk_send']="";
+	$rs['new_date']="";
+	$rs['operation_date']="";
+	$rs['complete_date']="";
+	$rs['systemid']="";
+	$rs['service']="";
+	$rs['coordinatorid']="";
+	$rs['send_date']="";
+	$rs['active_date']="";
+	$rs['ownid']="";
+}
+?>
+ 
 <!-- ผู้รับผิดชอบ -->
 <style type="text/css">
 #frmedit label.error{ color:red; }
@@ -113,15 +150,15 @@ $(document).ready(function() {
        $(this).rules("add", { required: true });
     }); 
 	
-	var content_id = "<?php echo $_GET['id']?>";
-	if(content_id == ""){
+	var status_id = "<?php echo $rs['status']?>";
+	if(status_id == "" || status_id == "1"){
 		$('.detail,.result,.test,.future').hide();
 	}else{
 		$('.detail,.result,.test,.future').show();
 	}
 	
     $('select[name=status]').change(function(){
-    	if($(this).val() == 1){
+    	if($(this).val() != 1){
     		$('.detail,.result,.test,.future').show();
     	}else{
     		$('.detail,.result,.test,.future').hide();
@@ -129,45 +166,6 @@ $(document).ready(function() {
     });
 });
 </script>
-
-
-<?php
-  	
-db_connect(); 
-if (isset($_GET['id']))
-{
-	//$id=$_GET['id'];
-	$rs=GetData("request_lists",$_GET['id']);
-	$dd="select new_date,operation_date,send_date,complete_date from request_lists where id=".$rs['id'];	
-	$result=mysql_query($dd) or die("datediff :".mysql_error());
-	$item=mysql_fetch_assoc($result);
-	
-	
-	
-}else{
-	$rs['id']="";
-	$rs['code']="";
-	$rs['status']="";
-	$rs['problemtype']="";
-	$rs['title']="";
-	$rs['send_note']="";
-	$rs['system_note']="";
-	$rs['coordinator_note']="";
-	$rs['response_note']="";
-	$rs['orderid']="";
-	$rs['responsibleid']="";
-	$rs['chk_send']="";
-	$rs['new_date']="";
-	$rs['operation_date']="";
-	$rs['complete_date']="";
-	$rs['systemid']="";
-	$rs['service']="";
-	$rs['coordinatorid']="";
-	$rs['send_date']="";
-	$rs['active_date']="";
-	$rs['ownid']="";
-}
- ?>
 
 <form id="frmedit" action="request_list/save.php" method="post" enctype="multipart/form-data">
 
@@ -445,27 +443,27 @@ if(@$_GET['id']!=""){
 </tr> -->
 <tr class="detail">
 	<th>รายละเอียดการดำเนินงาน</th>
-	<td><textarea name="Name" rows="5" cols="72"></textarea></td>
+	<td><textarea name="operation_detail" rows="5" cols="72"><?php echo $rs['operation_detail']?></textarea></td>
 </tr>
 <tr class="result">
 	<th>ผลการดำเนินงาน</th>
-	<td><textarea name="Name" rows="5" cols="72"></textarea></td>
+	<td><textarea name="result" rows="5" cols="72"><?php echo $rs['result']?></textarea></td>
 </tr>
 <tr class="test">
 	<th>ผลการทดสอบ</th>
-	<td><textarea name="Name" rows="5" cols="72"></textarea></td>
+	<td><textarea name="test" rows="5" cols="72"><?php echo $rs['test']?></textarea></td>
 </tr>
 <tr class="future">
 	<th>ข้อเสนอแนะในการนำไปสู่การแก้ปัญหาในอนาคต</th>
-	<td><textarea name="Name" rows="5" cols="72"></textarea></td>
+	<td><textarea name="future" rows="5" cols="72"><?php echo $rs['future']?></textarea></td>
 </tr>
 <tr>
 	<th>แจ้งผลการดำเนินงาน</th>
 	<td>
-		ชื่อ - สกุล <input type='text' name='' style="width:260px;"> วันที่แจ้ง <input type='text' name=''><br>
-		ช่องทางแจ้ง <input type="radio" name="service" value="tel"   <?php if($rs['service']=="tel"){echo "checked";}?>/> โทรศัพท์
-		<input type="radio" name="service" value="email" <?php if($rs['service']=="email"){echo "checked";}?>/> อีเมล์
-        <input type="radio" name="service" value="other" <?php if($rs['service']=="other"){echo "checked";}?>/> อื่นๆ
+		ชื่อ - สกุล <input type='text' name='rso_name' value="<?php echo $rs['rso_name']?>" style="width:260px;"> วันที่แจ้ง <input type='text' name='rso_date' class="datepicker" value="<?php echo DB2Date($rs['rso_date'])?>"><br>
+		ช่องทางแจ้ง <input type="radio" name="rso_channel" value="tel"   <?php if($rs['rso_channel']=="tel"){echo "checked";}?>/> โทรศัพท์
+		<input type="radio" name="rso_channel" value="email" <?php if($rs['rso_channel']=="email"){echo "checked";}?>/> อีเมล์
+        <input type="radio" name="rso_channel" value="other" <?php if($rs['rso_channel']=="other"){echo "checked";}?>/> อื่นๆ
 	</td>
 </tr>
 <tr>

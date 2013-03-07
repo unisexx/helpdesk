@@ -7,7 +7,8 @@ $per_page = 10;
 $link = mysql_connect("localhost","root","1234");
 //$port=(strlen($_SERVER['SERVER_PORT'])==4)?":".$_SERVER['SERVER_PORT']:"";
 //$host=$_SERVER['SERVER_NAME'].$port.$_SERVER['REQUEST_URI'];
-$host="http://localhost/helpdesk/";
+$host="http://localhost:70/helpdesk/";
+//$host="http://localhost/helpdesk/";
 $hd="Location:".$host;
 
 

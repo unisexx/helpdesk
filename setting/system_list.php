@@ -67,6 +67,8 @@
   <th align="left">ลำดับ</th>
   <th align="left">รหัส</th>
   <th align="left">ชื่อระบบงาน</th>
+  <th align="left">ผู้พัฒนา/MA</th>
+  <th align="left">เจ้าหน้าที่/ผู้ดูแลระบบ</th>
   <th align="left">ลบ</th>
   </tr>
 <?
@@ -78,6 +80,8 @@
   <td onclick="window.location='setting.php?act=systemform&id=<?=$row['ID'];?>';" ><?=$i;?></td>
   <td onclick="window.location='setting.php?act=systemform&id=<?=$row['ID'];?>';" ><?=$row['Code'];?></td>
   <td onclick="window.location='setting.php?act=systemform&id=<?=$row['ID'];?>';" ><?=$row['SystemName'];?></td>
+  <td></td>
+  <td></td>
   <td> <input type="submit" name="delbutton" id="delbutton" value="" class="btn_delete" onclick="ConfirmDelete('setting.php?type=System&act=delete&id=<?=$row['ID'];?>&chk_del=<?php echo $item_6['CanDelete'];?>');" /> </td>
 </tr>
 <? } ?>
