@@ -1,11 +1,8 @@
 <?php  
 	include "../include/session_config.php";
-	
   	include "../include/function.php";
   	include "../include/config.php";
-
 	db_connect();
-	
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -77,6 +74,7 @@
 		$sql .=" inner join usergroup d on a.usergroupid=d.id";
 		$sql .=" WHERE a.usertypeid='3' or a.usertypeid='4'";
 	}
+	echo $sql;
 	$result=mysql_query($sql);
 	$i=1;
 	while($item=mysql_fetch_assoc($result)):

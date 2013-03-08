@@ -4,10 +4,10 @@ $title = "ระบบแจ้งปัญหาการใช้ระบบ�
 $bf_title = "";
 $footer = "&copy; Copyright  Co., Ltd.";
 $per_page = 10;
-$link = mysql_connect("localhost","root","1234");
+$link = mysql_connect("localhost","crmsql","EpHy2LJvrSHCZ9n7");
 //$port=(strlen($_SERVER['SERVER_PORT'])==4)?":".$_SERVER['SERVER_PORT']:"";
 //$host=$_SERVER['SERVER_NAME'].$port.$_SERVER['REQUEST_URI'];
-$host="http://localhost/helpdesk/";
+$host="http://crm.m-society.go.th/helpdesk";
 //$host="http://localhost/helpdesk/";
 $hd="Location:".$host;
 
@@ -20,9 +20,9 @@ $alert_export="ไม่สามารถพิมพ์ข้อมูลไ�
 
 function db_connect()
 {
-	$link = mysql_connect("localhost","root","1234");
+	$link = mysql_connect("localhost","crmsql","EpHy2LJvrSHCZ9n7");
 	if(!$link){echo "error";}
-	mysql_select_db("helpdesk",$link);
+	mysql_select_db("crm_it",$link);
 	$charset = "SET NAMES 'utf8'";
 	mysql_query($charset);
 }
