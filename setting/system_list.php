@@ -1,6 +1,7 @@
 <?
   //include "include/notifybar.php";
   //include "include/set_notifybar.php";
+  include ('include/adodb_connect.php');
   $systemsearch = @$_GET['systemsearch'];
   $condition = " WHERE 1 = 1 ";
   $condition .= $systemsearch!='' ? " AND SystemName like '%".$systemsearch."%'" : "";  
@@ -80,8 +81,18 @@
   <td onclick="window.location='setting.php?act=systemform&id=<?=$row['ID'];?>';" ><?=$i;?></td>
   <td onclick="window.location='setting.php?act=systemform&id=<?=$row['ID'];?>';" ><?=$row['Code'];?></td>
   <td onclick="window.location='setting.php?act=systemform&id=<?=$row['ID'];?>';" ><?=$row['SystemName'];?></td>
-  <td></td>
-  <td></td>
+  <td onclick="window.location='setting.php?act=systemform&id=<?=$row['ID'];?>';">
+  	<?php $rs = $db->GetAll("SELECT * FROM ma_user where system_id = ".$row['ID']." ORDER BY id ASC");?>
+  	<?php foreach($rs as $ma):?>
+  		<?php echo $ma['m_name']?><br>
+  	<?php endforeach;?>
+  </td>
+  <td onclick="window.location='setting.php?act=systemform&id=<?=$row['ID'];?>';">
+  	<?php $rs = $db->GetAll("SELECT * FROM admin_user where system_id = ".$row['ID']." ORDER BY id ASC");?>
+  	<?php foreach($rs as $admin):?>
+  		<?php echo $admin['a_name']?><br>
+  	<?php endforeach;?>
+  </td>
   <td> <input type="submit" name="delbutton" id="delbutton" value="" class="btn_delete" onclick="ConfirmDelete('setting.php?type=System&act=delete&id=<?=$row['ID'];?>&chk_del=<?php echo $item_6['CanDelete'];?>');" /> </td>
 </tr>
 <? } ?>

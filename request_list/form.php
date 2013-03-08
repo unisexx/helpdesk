@@ -1,4 +1,5 @@
 <?php
+include ('include/adodb_connect.php');
 db_connect(); 
 if (isset($_GET['id']))
 {
@@ -265,6 +266,26 @@ $(document).ready(function() {
     		<input type="radio" name="systemid"  value="<?php echo $item['id']?>" <?php if($item['id']==$rs['systemid']){echo "checked";}?>/> <?php echo $item['name']?>
         </span>
 		<?php endwhile; ?> 
+		
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$('input[type=radio][name=systemid]').click(function(){
+			$.get('_ajax_function.php',{
+				'id' : $(this).val(),
+				'action':'get_ma_user'
+			},function(data){
+				$('.ma_user').html(data);
+			});
+			
+			$.get('_ajax_function.php',{
+				'id' : $(this).val(),
+				'action':'get_admin_user'
+			},function(data){
+				$('.admin_user').html(data);
+			});
+		});
+	});
+	</script>
 </div>  
 </td>
 </tr>
@@ -403,9 +424,8 @@ if(@$_GET['id']!=""){
 </tr>
 <tr>
   <th>ผู้พัฒนา/MA</th>    
-  <td> 
-  
-  	<?php if($rs['responsibleid']!=0 || $rs['responsibleid']!="" ):?>
+  <td class="ma_user">
+  	<!-- <?php if($rs['responsibleid']!=0 || $rs['responsibleid']!="" ):?>
   		<?php echo $reponse=GetUser($rs['responsibleid'],'response');?>
         <input name="responsibleid" type="hidden" value="<?php echo $rs['responsibleid'];?>" />
         
@@ -416,13 +436,43 @@ if(@$_GET['id']!=""){
 		 if($rs['responsibleid']==0 || $rs['responsibleid']==""){
 	    		echo $reponse=GetUser($_SESSION['id'],'user');?>
 	        <input name="responsibleid" type="hidden" value="<?php echo $_SESSION['id'];?>" />             
-  <?php }}?>
- 
+  <?php }}?> -->
+  		
+  		<?php 
+			if($rs['systemid'] != ""){
+				$rs2 = $db->GetAll("SELECT * FROM ma_user where system_id = ".$rs['systemid']." ORDER BY id ASC");
+		if($rs2){
+					echo '<style>table.nowidth td{width:auto !important;}table.nowidth th{background:#ddcded;}</style>';
+					echo '<table class="nowidth">';
+					echo '<tr><th>ชื่อ-สกุล</th><th>เบอร์ติดต่อ</th><th>อีเมล์</th><th>ชื่อบริษัท</th><th>เบอร์ติดต่อ</th></tr>';
+					foreach($rs2 as $row){
+						echo '<tr><td>'.$row['m_name'].'</td><td>'.$row['m_tel'].'</td><td>'.$row['m_email'].'</td><td>'.$row['m_company'].'</td><td>'.$row['m_ctel'].'</td></tr>';
+					}
+					echo '</table>';	
+				}
+			}
+		
+		?>
   </td>
 </tr>
 <tr>
 	<th>เจ้าหน้าที่/ผู้ดูแลระบบ</th>
-	<td></td>
+	<td class="admin_user">
+		<?php 
+			if($rs['systemid'] != ""){
+				$rs3 = $db->GetAll("SELECT * FROM admin_user where system_id = ".$rs['systemid']." ORDER BY id ASC");
+				if($rs3){
+					echo '<style>table.nowidth td{width:auto !important;}</style>';
+					echo '<table class="nowidth">';
+					echo '<tr><th>ชื่อ-สกุล</th><th>เบอร์ติดต่อ</th><th>อีเมล์</th><th>ชื่อบริษัท</th><th>เบอร์ติดต่อ</th></tr>';
+					foreach($rs3 as $row){
+						echo '<tr><td>'.$row['a_name'].'</td><td>'.$row['a_tel'].'</td><td>'.$row['a_email'].'</td><td>'.$row['a_company'].'</td><td>'.$row['a_ctel'].'</td></tr>';
+					}
+					echo '</table>';
+				}
+			}
+		?>
+	</td>
 </tr>
 <!-- <tr>
   <th valign="top">ส่งให้เจ้าของระบบ</th>
@@ -460,7 +510,7 @@ if(@$_GET['id']!=""){
 <tr>
 	<th>แจ้งผลการดำเนินงาน</th>
 	<td>
-		ชื่อ - สกุล <input type='text' name='rso_name' value="<?php echo $rs['rso_name']?>" style="width:260px;"> วันที่แจ้ง <input type='text' name='rso_date' class="datepicker" value="<?php echo DB2Date($rs['rso_date'])?>"><br>
+		ชื่อ - สกุล <input type='text' name='rso_name' value="<?php echo $rs['rso_name']?>" style="width:260px;"> วันที่แจ้ง <input type='text' name='rso_date' class="datepicker" value="<?php echo ($rs['rso_date'] != "0000-00-00")?DB2Date($rs['rso_date']):'';?>"><br>
 		ช่องทางแจ้ง <input type="radio" name="rso_channel" value="tel"   <?php if($rs['rso_channel']=="tel"){echo "checked";}?>/> โทรศัพท์
 		<input type="radio" name="rso_channel" value="email" <?php if($rs['rso_channel']=="email"){echo "checked";}?>/> อีเมล์
         <input type="radio" name="rso_channel" value="other" <?php if($rs['rso_channel']=="other"){echo "checked";}?>/> อื่นๆ

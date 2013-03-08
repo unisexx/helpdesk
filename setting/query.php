@@ -459,6 +459,8 @@ if($_GET['act']=='delete')
 	  mysql_query("DELETE FROM system WHERE ID=".$_GET['id']);
 	  // delete ma_user
 	  mysql_query("DELETE FROM ma_user WHERE system_id=".$_GET['id']);
+	  // delete admin_user
+	  mysql_query("DELETE FROM admin_user WHERE system_id=".$_GET['id']);
 	  
 	}else{Alert($GLOBALS["alert_del"]);}
 	  ReDirect('setting.php?act=systemlist','top');
@@ -472,14 +474,28 @@ else
 		//update ma_user
 		foreach($_POST['m_name'] as $key => $item){
 			if($item){
-				if($_POST['id'][$key] != ""){
-					mysql_query ("UPDATE ma_user SET m_name='".$item."', m_tel='".$_POST['m_tel'][$key]."', m_email='".$_POST['m_email'][$key]."', m_company='".$_POST['m_company'][$key]."', m_ctel='".$_POST['m_ctel'][$key]."' WHERE ID=".$_POST['id'][$key])  or die("Error System:".mysql_error());
+				if($_POST['ma_id'][$key] != ""){
+					mysql_query ("UPDATE ma_user SET m_name='".$item."', m_tel='".$_POST['m_tel'][$key]."', m_email='".$_POST['m_email'][$key]."', m_company='".$_POST['m_company'][$key]."', m_ctel='".$_POST['m_ctel'][$key]."' WHERE ID=".$_POST['ma_id'][$key])  or die("Error System:".mysql_error());
 				}else{
 					mysql_query ("INSERT INTO ma_user( system_id, m_name, m_tel, m_email, m_company,m_ctel) VALUES( ".$_GET['id'].", '".$item."', '".$_POST['m_tel'][$key]."', '".$_POST['m_email'][$key]."', '".$_POST['m_company'][$key]."', '".$_POST['m_ctel'][$key]."')") or die ("Error System:".mysql_error());
 				}
 				
 			}
 		}
+		/*************/
+		
+		//update admin_user
+		foreach($_POST['a_name'] as $key => $item){
+			if($item){
+				if($_POST['admin_id'][$key] != ""){
+					mysql_query ("UPDATE admin_user SET a_name='".$item."', a_tel='".$_POST['a_tel'][$key]."', a_email='".$_POST['a_email'][$key]."', a_company='".$_POST['a_company'][$key]."', a_ctel='".$_POST['a_ctel'][$key]."' WHERE ID=".$_POST['admin_id'][$key])  or die("Error System:".mysql_error());
+				}else{
+					mysql_query ("INSERT INTO admin_user( system_id, a_name, a_tel, a_email, a_company,a_ctel) VALUES( ".$_GET['id'].", '".$item."', '".$_POST['a_tel'][$key]."', '".$_POST['a_email'][$key]."', '".$_POST['a_company'][$key]."', '".$_POST['a_ctel'][$key]."')") or die ("Error System:".mysql_error());
+				}
+				
+			}
+		}
+		/*************/
 		
 	}else{Alert($GLOBALS["alert_edit"]);}
 	   ReDirect('setting.php?act=systemlist','top');
@@ -498,6 +514,15 @@ else
 				mysql_query ("INSERT INTO ma_user( system_id, m_name, m_tel, m_email, m_company,m_ctel) VALUES( ".$row['max(ID)'].", '".$item."', '".$_POST['m_tel'][$key]."', '".$_POST['m_email'][$key]."', '".$_POST['m_company'][$key]."', '".$_POST['m_ctel'][$key]."')") or die ("Error System:".mysql_error());
 			}
 		}
+		/*************/
+		
+		// เพิ่ม admin_user
+		foreach($_POST['a_name'] as $key => $item){
+			if($item){
+				mysql_query ("INSERT INTO admin_user( system_id, a_name, a_tel, a_email, a_company,a_ctel) VALUES( ".$row['max(ID)'].", '".$item."', '".$_POST['a_tel'][$key]."', '".$_POST['a_email'][$key]."', '".$_POST['a_company'][$key]."', '".$_POST['a_ctel'][$key]."')") or die ("Error System:".mysql_error());
+			}
+		}
+		/*************/
 		
 		$sql = "SELECT ID FROM system WHERE SystemName='".$_POST['txtSystem']."' ";
 		$result = mysql_query($sql);

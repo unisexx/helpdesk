@@ -193,25 +193,27 @@ switch (strlen($n_row)){
 
 
 if(@$_POST['id']==""){
-				$field  ="problemtype,title,status,chk_send";
-				$field .=",send_note";
-				$field .=",new_date,operation_date,complete_date";
-				$field .=",orderid,responsibleid,coordinatorid,systemid";
-				$field .=",service,code,send_date,active_date,system_success,response_success,ownid";
-				$field .=",operation_detail,result,test,future,admin_id,rso_name,rso_date,rso_channel";
+	
+	$field  ="problemtype,title,status,chk_send";
+	$field .=",send_note";
+	$field .=",new_date,operation_date,complete_date";
+	$field .=",orderid,responsibleid,coordinatorid,systemid";
+	$field .=",service,code,send_date,active_date,system_success,response_success,ownid";
+	$field .=",operation_detail,result,test,future,admin_id,rso_name,rso_date,rso_channel";
 				
-	echo $_SESSION['usertype'];
+	$rso_date = ($_POST['rso_date'])?Date2DB($_POST['rso_date']):''; 
+	// echo $_SESSION['usertype'];
 	switch($_SESSION['usertype'])
 		{
 			case "1": 	
-			//ผู้รับผิดชอบ	
+			//ผู้รับผิดชอบ
 				$val  ="'".$_POST['problemtype']."','".$_POST['title']."','".$_POST['status']."','".@$_POST['chk_send']."'";						
 				$val .=",'".$_POST['send_note']."'";
 				$val .=",'".$_POST['new_date']."','".$_POST['operation_date']."','".$_POST['complete_date']."'";
 				$val .=",'".$_POST['orderid']."','".$_POST['responsibleid']."','".$_POST['coordinatorid']."','".$_POST['systemid']."','".@$_POST['service']."'";
 				$val .=",'".$_POST['code']."','".@$_POST['send_date']."','".@$_POST['active_date']."'";
 				$val .=",'".@$_POST['system_success']."','".@$_POST['response_success']."',''";
-				$val .=",'".@$_POST['operation_detail']."','".@$_POST['result']."','".@$_POST['test']."','".@$_POST['future'].",'".@$_POST['admin_id'].",'".@$_POST['rso_name'].",'".@$_POST['rso_date'].",'".@$_POST['rso_channel']."'";
+				$val .=",'".@$_POST['operation_detail']."','".@$_POST['result']."','".@$_POST['test']."','".@$_POST['future']."','".@$_POST['admin_id']."','".@$_POST['rso_name']."','".@$rso_date."','".@$_POST['rso_channel']."'";
 				break;
 			
 			case "2": 	
@@ -241,7 +243,7 @@ if(@$_POST['id']==""){
 				break;
 		}
 	
-	      
+			// echo "INSERT INTO request_lists(".$field.") VALUES(".$val.")";
 			mysql_query("LOCK TABLES request_lists WRITE"); 
 			mysql_query("SET AUTOCOMMIT = 0");	
 	

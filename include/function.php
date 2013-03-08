@@ -72,7 +72,7 @@ function DB2Date($Dt)
 	                $showtime = ($time)?$time:'';
 			return $d."/".$m."/".($y+543);
 		}else{ 
-			return "-"; }
+			return ""; }
 }
 function DateTH2DB($date){
 		list($d,$m,$y) = explode('/', $date);
