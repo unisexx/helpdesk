@@ -7,7 +7,7 @@ db_connect();
   <option value="">กรุณาเลือกกลุ่ม/ฝ่าย</option>
   <?
    $condition = ($_GET['id'] !='') ? " WHERE divisionid='".$_GET['id']."'" : "" ;
-  $sql = "SELECT * FROM section ".$condition;
+  $sql = "SELECT * FROM hd_section ".$condition;
   
   $sresult = mysql_query($sql);
   while($srow=mysql_fetch_array($sresult)){

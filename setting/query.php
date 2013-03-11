@@ -1,6 +1,6 @@
-
-
 <?php
+// error_reporting(E_ALL);
+// ini_set("display_errors", 1);
 
 // set notifybar
 //include "include/notifybar.php";
@@ -18,6 +18,8 @@ function get_detail($field,$arr,$table){
 		return "";
 	}
 }
+
+
  
  switch($_GET['type'])
   {
@@ -208,10 +210,10 @@ function get_detail($field,$arr,$table){
 			}
 		}
 		// detail log
+		$detail = array();
 		if(empty($arr_key)){
 	  	  $detail[]="รหัส : ".$_POST['code'];
 		  $detail[]=" ไม่มีการเปลี่ยนแปลงใดๆ";		
-			
 		}else{
 			 $detail[]="ดังนี้ รหัส : ".$row['Code'];
 			
@@ -251,6 +253,7 @@ function get_detail($field,$arr,$table){
       Division();
       break;
     case "group":
+		
 		$row=GetData("hd_section",$_GET['id']);
 		$field="GroupName,DeptID,DivisionID";
 		$arr=array("GroupName"=>$_POST['txtGroupName'],"DeptID"=>$_POST['department'],"DivisionID"=>$_POST['division']);	
@@ -263,39 +266,37 @@ function get_detail($field,$arr,$table){
 				$_SESSION["shw_type"]="delete";
 			}
 		}
+		
 		// detail log
+		$detail = array();
 		if(empty($arr_key)){
 		  $detail[]="รหัส : ".$_POST['code'];
-		  $detail[]=" ไม่มีการเปลี่ยนแปลงใดๆ";		
+		  $detail[]=" ไม่มีการเปลี่ยนแปลงใดๆ";
 		}else{
-			 $detail[]="ดังนี้ รหัส : ".$row['Code'];
 			
-			foreach($arr_key as $key=>$value){			
-				
+			$detail[]="ดังนี้ รหัส : ".$row['Code'];
+			foreach($arr_key as $key=>$value){				
 				switch($key){
-					
 					case "GroupName":
-						
 						$detail[]="กลุ่ม/ฝ่ายจาก :".$row['GroupName']." เป็น".$_POST['txtGroupName'];
 						break;
-					case "DeptID":
-					
+					case "DeptID":					
 						$name1['deptname']=GetOne("deptname","id",$row['DeptID'],"department");
 						$name2['deptname']=GetOne("deptname","id",$_POST['department'],"department");
 						$detail[]="กรมจาก :".$name1['deptname']." เป็น".$name2['deptname'];
 						break;
 					case "DivisionID":
-						
 						$name1['divisionname']=GetOne("divisionname","id",$row['DivisionID'],"division");
 						$name2['divisionname']=GetOne("divisionname","id",$_POST['division'],"division");
 						$detail[]="กอง/สำนักจาก :".$name1['divisionname']." เป็น".$name2['divisionname'];
 						break;
+					default:
+						break;
 				}//close switch
 			}//close foreach			
 			$detail=implode(", ",$detail);
-			
 		}//close if
-		
+		echo "AA ";
 		echo $_GET['type'].'<br>';
 		echo $_GET['act'];
 		

@@ -7,7 +7,7 @@ $per_page = 10;
 $link = mysql_connect("localhost","crmsql","EpHy2LJvrSHCZ9n7");
 //$port=(strlen($_SERVER['SERVER_PORT'])==4)?":".$_SERVER['SERVER_PORT']:"";
 //$host=$_SERVER['SERVER_NAME'].$port.$_SERVER['REQUEST_URI'];
-$host="http://crm.m-society.go.th/helpdesk";
+$host="http://crm.m-society.go.th/helpdesk/";
 //$host="http://localhost/helpdesk/";
 $hd="Location:".$host;
 

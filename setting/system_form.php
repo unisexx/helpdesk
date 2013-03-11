@@ -9,7 +9,7 @@ $().ready(function() {
     rules: {
       txtSystem:{
 		  required:true,
-		  remote:"setting/chk_dup_system.php?name=system"
+		  remote:"setting/chk_dup_system.php?name=system&id=<?php echo @$_GET['id']?>"
 	  }
     },
     messages: {
@@ -97,7 +97,7 @@ if(@$_GET['id']!=''){
 			<div class="ma-row">
 				ชื่อ-สกุล <input type="text" name="m_name[]" value="<?php echo $ma['m_name']?>"> 
 				เบอร์ติดต่อ <input type="text" name="m_tel[]" value="<?php echo $ma['m_tel']?>"> 
-				อีเมล์ <input type="text" name="m_email[]" value="<?php echo $ma['m_email']?>"> 
+				อีเมล์ <input type="text" name="m_email[]" value="<?php echo $ma['m_email']?>"><br>
 				ชื่อบริษัท <input type="text" name="m_company[]" value="<?php echo $ma['m_company']?>"> 
 				เบอร์ติดต่อ <input type="text" name="m_ctel[]" value="<?php echo $ma['m_ctel']?>">
 				<input type="hidden" name="ma_id[]" value="<?php echo $ma['id']?>">
@@ -108,7 +108,7 @@ if(@$_GET['id']!=''){
 		<div class="ma-row">
 			ชื่อ-สกุล <input type="text" name="m_name[]" value=""> 
 			เบอร์ติดต่อ <input type="text" name="m_tel[]" value=""> 
-			อีเมล์ <input type="text" name="m_email[]" value=""> 
+			อีเมล์ <input type="text" name="m_email[]" value=""><br>
 			ชื่อบริษัท <input type="text" name="m_company[]"> 
 			เบอร์ติดต่อ <input type="text" name="m_ctel[]">
 			<input type="hidden" name="id[]" value="">
@@ -124,7 +124,7 @@ if(@$_GET['id']!=''){
 			<div class="admin-row">
 				ชื่อ-สกุล <input type="text" name="a_name[]" value="<?php echo $ad['a_name']?>"> 
 				เบอร์ติดต่อ <input type="text" name="a_tel[]" value="<?php echo $ad['a_tel']?>"> 
-				อีเมล์ <input type="text" name="a_email[]" value="<?php echo $ad['a_email']?>"> 
+				อีเมล์ <input type="text" name="a_email[]" value="<?php echo $ad['a_email']?>"><br>
 				ชื่อบริษัท <input type="text" name="a_company[]" value="<?php echo $ad['a_company']?>"> 
 				เบอร์ติดต่อ <input type="text" name="a_ctel[]" value="<?php echo $ad['a_ctel']?>">
 				<input type="hidden" name="admin_id[]" value="<?php echo $ad['id']?>">
@@ -132,7 +132,13 @@ if(@$_GET['id']!=''){
 			</div>
 		<?php endwhile;?>
 		<?php endif;?>
-		<div class="admin-row">ชื่อ-สกุล <input type="text" name="a_name[]" value=""> เบอร์ติดต่อ <input type="text" name="a_tel[]" value=""> อีเมล์ <input type="text" name="a_email[]" value=""> ชื่อบริษัท <input type="text" name="a_company[]"> เบอร์ติดต่อ <input type="text" name="a_ctel[]"></div>
+		<div class="admin-row">
+			ชื่อ-สกุล <input type="text" name="a_name[]" value=""> 
+			เบอร์ติดต่อ <input type="text" name="a_tel[]" value=""> 
+			อีเมล์ <input type="text" name="a_email[]" value=""><br>
+			ชื่อบริษัท <input type="text" name="a_company[]"> 
+			เบอร์ติดต่อ <input type="text" name="a_ctel[]">
+		</div>
 	</td>
 </tr>
 </table>

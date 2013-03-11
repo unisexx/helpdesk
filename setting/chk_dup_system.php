@@ -1,22 +1,25 @@
-
 <?php 
- 
   include "../include/session_config.php";
   include "../include/config.php";
   include "../include/function.php";
-  
   db_connect();
 /*  $_GET['name']="group";
   $_GET['txtGroupName']="สำนักกกกกก";
   $_GET['deptid']="20";
   $_GET['divisionid']="9";
 */
-function get_chk($field,$val,$tb){
+function get_chk($field,$val,$tb,$allow=false){
 	$sql="select $field from $tb where $field='$val'";	
 	$result=mysql_query($sql); 
 	$item=mysql_fetch_assoc($result);
+	// echo 'text = '.$item[$field];
+	// echo 'allow = '.$allow;
 	if($item[$field]){
-		return "false";
+		if($item[$field] == $allow){
+			return "true";
+		}else{
+			return "false";
+		}
 	}else {
 		return  "true";
 	}
@@ -28,7 +31,14 @@ switch($_GET['name']){
 		$field="systemname";
 		$val=$_GET['txtSystem'];
 		$tb="system";
-		$chk=get_chk($field,$val,$tb);
+		
+		if($_GET['id']){ // ถ้าเป็นเคส edit สามารถผ่านหัวข้อตัวเองได้
+			$sql="select $field from $tb where id=".$_GET['id'];	
+			$result=mysql_query($sql);
+			$item=mysql_fetch_assoc($result);
+		}
+		
+		$chk=get_chk($field,$val,$tb,$item[$field]);
 		echo $chk;
 	break;
 	case "problem":
