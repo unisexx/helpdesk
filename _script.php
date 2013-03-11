@@ -8,6 +8,7 @@
 <link rel="stylesheet" type="text/css" href="js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
 
 <script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.paginate.js"></script>
 <script type="text/javascript" src="js/vtip.js"></script>
 <script type="text/javascript" src="js/jquery-script.js"></script>
 <script type="text/javascript" src="js/core.js"></script>

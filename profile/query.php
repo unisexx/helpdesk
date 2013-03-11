@@ -155,7 +155,7 @@ else{
 	    setSessionTime(3600); 
 		$field="id,dates,detail,ipaddress,userid";
 		$val ="'','".$_SESSION["date_login"]."','log in','".$_SESSION["ip"]."','".$_SESSION["id"]."'";
-		$result=mysql_query("INSERT INTO logs(".$field.") VALUES(".$val.")") or die("Invalid query: " . mysql_error()); 
+		$result=mysql_query("INSERT INTO hd_logs(".$field.") VALUES(".$val.")") or die("Invalid query: " . mysql_error()); 
 		
 	
 	

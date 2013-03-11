@@ -84,7 +84,7 @@ $("#division").change(function() {
 	   }
 </script>
 <?php
-if(@$_GET['id']!='')$row = GetData('section',@$_GET['id']);
+if(@$_GET['id']!='')$row = GetData('hd_section',@$_GET['id']);
 ?>
 <h3>ตั้งค่า กลุ่ม/ฝ่าย (เพิ่ม / แก้ไข)</h3>
 <form name="frmgroup" id="frmgroup" class="commentForm" enctype="multipart/form-data" action="setting.php?act=query&type=group&id=<?php echo @$_GET['id'];?>&chk_edit=<?php echo $item_4['CanEdit']; ?>&chk_add=<?php echo $item_4['CanAdd']; ?>" method="post">

@@ -7,7 +7,7 @@
   $condition .= $groupsearch!='' ? " AND GroupName like '%".$groupsearch."%'" : "";
                 $num_pages= 1;
                 $page= @$_GET['page']!='' ? @$_GET['page'] : 1;
-                  $sql = "select * from section  ".$condition;   
+                  $sql = "select * from hd_section  ".$condition;   
 				  //var_dump($sql);
                         $prev_page = $page - 1; 
                         $next_page = $page + 1; 
@@ -27,7 +27,6 @@
 ?>
 <h3>ตั้งค่า กลุ่ม/ฝ่าย</h3> 
 <div  >มีทั้งหมด <?=$num_rows;?> รายการ  / <?=$num_pages;?> หน้า <div id="pagenavi" ></div></div>
-          <script src="../js/jquery.paginate.js" type="text/javascript"></script>  
                     <script type="text/javascript">
                                 $("#pagenavi").paginate({
                                 count     : <?=$num_pages;?>,
@@ -94,7 +93,9 @@
     echo $dept['DeptName'];
   ?>
   </td>
-  <td><input type="submit" name="delbutton" id="delbutton" value="" class="btn_delete" onclick="ConfirmDelete('setting.php?type=group&act=delete&id=<?=$row['ID'];?>&chk_del=<?php echo $item_4['CanDelete'];?>');" /> </td>
+  <td>
+  	<input type="submit" name="delbutton" id="delbutton" value="" class="btn_delete" onclick="ConfirmDelete('setting.php?type=group&act=delete&id=<?=$row['ID'];?>&chk_del=<?php echo $item_4['CanDelete'];?>');" />
+  </td>
 </tr>
 <? } ?>
 </table>

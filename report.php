@@ -26,7 +26,6 @@
 	if($item_8==""){$item_8['CanView']="";}
 	
 	
-	
 
 	switch(@$_GET['act'])
 	{

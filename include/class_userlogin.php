@@ -46,7 +46,7 @@ class UserLogin{
 	
 	$field="dates,detail,ipaddress,userid";
 	$val ="'".date('Y-m-d H:i:s')."','".$desc."','".$_SESSION["ip"]."','".$_SESSION["id"]."'";
-	$sql="INSERT INTO logs(".$field.") VALUES(".$val.")";
+	$sql="INSERT INTO hd_logs(".$field.") VALUES(".$val.")";
 	$result=mysql_query($sql) or die("Invalid query: " . mysql_error());  
 	return $result;
 	

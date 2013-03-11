@@ -42,7 +42,6 @@
 	switch($_GET['act'])
 	{
 		    case 'delete':
-				
 				include "setting/query.php";
 		    break;
 			case 'query':

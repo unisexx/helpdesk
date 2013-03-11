@@ -251,10 +251,10 @@ function get_detail($field,$arr,$table){
       Division();
       break;
     case "group":
-		$row=GetData("section",$_GET['id']);
+		$row=GetData("hd_section",$_GET['id']);
 		$field="GroupName,DeptID,DivisionID";
 		$arr=array("GroupName"=>$_POST['txtGroupName'],"DeptID"=>$_POST['department'],"DivisionID"=>$_POST['division']);	
-		$arr_key=get_detail($field,$arr,"section");	
+		$arr_key=get_detail($field,$arr,"hd_section");	
 		if($_GET['act']=="delete"){
 			if($_GET['chk_del']=="1"){
 				$detail="รหัส ".$row['Code'];
@@ -267,8 +267,6 @@ function get_detail($field,$arr,$table){
 		if(empty($arr_key)){
 		  $detail[]="รหัส : ".$_POST['code'];
 		  $detail[]=" ไม่มีการเปลี่ยนแปลงใดๆ";		
-		
-		  	
 		}else{
 			 $detail[]="ดังนี้ รหัส : ".$row['Code'];
 			
@@ -298,6 +296,9 @@ function get_detail($field,$arr,$table){
 			
 		}//close if
 		
+		echo $_GET['type'].'<br>';
+		echo $_GET['act'];
+		
 		if($_GET['id']!=""){
 			
 			if($_GET['chk_edit']=="1"){
@@ -312,6 +313,7 @@ function get_detail($field,$arr,$table){
 				$_SESSION["shw_type"]="add";
 			}			
 		}
+		
       Group();
       break;
     case "server";
@@ -618,34 +620,33 @@ function Group()
 if($_GET['act']=='delete')
 { 
 	if($_GET['chk_del']=="1"){
-	  mysql_query("DELETE FROM section WHERE ID=".$_GET['id']);
+	  mysql_query("DELETE FROM hd_section WHERE ID=".$_GET['id']);
 	  
 	}else{Alert($GLOBALS["alert_del"]);} 
 	  ReDirect('setting.php?act=grouplist','top');
-	  
 }
 else
 { 
   if($_GET['id']!='')
   {
     if($_GET['chk_edit']=="1"){
-		mysql_query("UPDATE section SET GroupName='".$_POST['txtGroupName']."', DivisionID=".$_POST['division'].", DeptID=".$_POST['department']." WHERE ID=".$_GET['id']);
+		mysql_query("UPDATE hd_section SET GroupName='".$_POST['txtGroupName']."', DivisionID=".$_POST['division'].", DeptID=".$_POST['department']." WHERE ID=".$_GET['id']);
 		 
 	}else {Alert($GLOBALS["alert_edit"]);}
   }else{
   	if($_GET['chk_add']=="1"){
 		
-		$sql ="INSERT INTO section( Code, GroupName, DivisionID, DeptID) ";
+		$sql ="INSERT INTO hd_section( Code, GroupName, DivisionID, DeptID) ";
 		$sql.=" VALUES( '','".$_POST['txtGroupName']."','".$_POST['division']."','".$_POST['department']."')";
 		
-		mysql_query($sql) or die("Insert section:".mysql_error());
+		mysql_query($sql) or die("Insert hd_section:".mysql_error());
 		
-		$sql = "SELECT ID FROM section WHERE GroupName='".$_POST['txtGroupName']."' ";
+		$sql = "SELECT ID FROM hd_section WHERE GroupName='".$_POST['txtGroupName']."' ";
 		$result = mysql_query($sql);
 		$row = mysql_fetch_array($result);
 		
 		$code = "G".str_pad($row['ID'], 3, "0", STR_PAD_LEFT);  
-		mysql_query("UPDATE section SET Code='".$code."' WHERE ID=".$row['ID']);
+		mysql_query("UPDATE hd_section SET Code='".$code."' WHERE ID=".$row['ID']);
 	
 	}else { Alert($GLOBALS["alert_add"]);}
   }
