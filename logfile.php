@@ -28,7 +28,7 @@ $(document).ready(function() {
 	  if(!isset($pm)){
 		$pm=new UserLogin();
 	  }
-	  if($_GET['page']==NULL){
+	  if(@$_GET['page']==NULL){
 		$pm->AddLog(30);
 	  }
 
@@ -49,7 +49,7 @@ $(document).ready(function() {
 	 $sql_cond=mysql_query("SELECT id from informent where usergroupid='2' and id='".$_SESSION["id"]."'") or die("Error".mysql_error());
 	 $res=mysql_fetch_assoc($sql_cond);
 	 if($res==NULL){$cond=" and userid='".$_SESSION["id"]."'";}else{$cond="";}
-	 $sql  ="SELECT ipaddress,userid,dates,detail FROM logs where 1 ".$cond.$where;
+	 $sql  ="SELECT ipaddress,userid,dates,detail FROM hd_logs where 1 ".$cond.$where;
 	 
 	 $result=mysql_query($sql);
 	 $i=1;

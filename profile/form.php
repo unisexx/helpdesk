@@ -1,6 +1,4 @@
-
 <style type="text/css">
-
 .commentForm label { color:red; }
 .commentForm label.error{ color:red; }
 </style>
@@ -18,13 +16,11 @@
 
 $(document).ready(function() {
     
-	
-
-  $.validator.setDefaults({
-  submitHandler: function() {   
-  $("#frmprofile").submit();
-  }
-});
+  // $.validator.setDefaults({
+	  // submitHandler: function() {   
+	  // $("#frmprofile").submit();
+	  // }
+	// });
    
   $("#frmprofile").validate({
     rules: {
@@ -129,17 +125,17 @@ function CheckForValidate(pUserGroup)
 	   superadminID =  <?=$superAdminID  ?>; 
 		if(pUserGroup == superadminID)
 		{
-						$("#Department").rules("remove");
-						$("#Division").rules("remove");
-						$("#section").rules("remove");
-						$("#human").rules("remove");
+			$("#Department").rules("remove");
+			$("#Division").rules("remove");
+			$("#section").rules("remove");
+			$("#human").rules("remove");
 		}
 		else
 		{
-						$("#Department").rules("add",{required:true});
-						$("#Division").rules("add",{required:true});
-						$("#section").rules("add",{required:true});
-						$("#human").rules("add",{required:true});																		
+			$("#Department").rules("add",{required:true});
+			$("#Division").rules("add",{required:true});
+			$("#section").rules("add",{required:true});
+			$("#human").rules("add",{required:true});
 		}
 }
 </script>
@@ -148,21 +144,20 @@ var deptid;
 var divid;
 function ReloadDivisionList(pDeptID)
 	   {		   	  
-		   
-			 deptid=pDeptID;
-			   url = "_ajax_group_list.php?id="+pDeptID;			
-		   		$.get(url,function(data){
-					$("#dvDivisionList").html(data);
-					
-				});
+		 deptid=pDeptID;
+		   url = "_ajax_group_list.php?id="+pDeptID;			
+	   		$.get(url,function(data){
+				$("#dvDivisionList").html(data);
+				
+			});
 	   }
 function ReloadSectionList(div)
 {
-		      divid=div;
-				url = "_ajax_section_list.php?id="+div+"&deptid="+deptid;			
-		   		$.get(url,function(data){
-					$("#dvsectionlist").html(data);
-				});
+  divid=div;
+	url = "_ajax_section_list.php?id="+div+"&deptid="+deptid;			
+	$.get(url,function(data){
+		$("#dvsectionlist").html(data);
+	});
 		
 }
    function trim(stringToTrim)

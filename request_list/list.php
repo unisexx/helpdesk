@@ -14,7 +14,7 @@ db_connect();
 				//var_dump($_GET['page']); 
 				//var_dump($_SESSION["show"]);
 				if(!isset($_SESSION["show"])){
-					if($_GET['page']==NULL){
+					if(@$_GET['page']==NULL){
 						$pm->AddLog(38);
 					}
 				}
@@ -200,6 +200,7 @@ db_connect();
   <th>ชื่อผู้แจ้ง</th>  
   <th>ผู้รับผิดชอบ</th>
   <th>ผู้ประสานงาน</th>
+  <th>รายงาน</th>
   <?php endif; ?>
   <th>ลบ</th>
   </tr>
@@ -231,6 +232,7 @@ db_connect();
   <td onclick="window.location='request_list.php?act=form&id=<?php echo $item['id']?>'" style="cursor:pointer;"><?php echo GetUser($item['responsibleid'],'response')?></td>
   <td onclick="window.location='request_list.php?act=form&id=<?php echo $item['id']?>'" style="cursor:pointer;"><?php echo ($item['coordinatorid']==0)?"-": GetUser($item['coordinatorid'],'coor');?></td>
   <?php endif; ?>
+  <td><a href="request_list_report.php?id=<?php echo $item['id'];?>" target="_blank"><img src="images/reports-icon" width="24" height="24"></a></td>
   <td>
   <!-- ถ้ามีการปรับสถานะไปแล้วไม่ใช่ superadmin + ผู้รับผิดชอบ ลบรายการแจ้งไม่ได้นะ -->
   <?php  if($item['status']!="1" && ($_SESSION["usergroupid"]!="2" || $_SESSION["usertype"]!="1")){?>

@@ -1,7 +1,7 @@
 <?php
  
  if(!isset($_SESSION["show"])){	
- 	if($_GET['page']==NULL){
+ 	if(@$_GET['page']==NULL){
 		$pm->AddLog(34);
 	}
  }

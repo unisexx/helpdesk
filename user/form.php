@@ -384,7 +384,7 @@ function CheckForValidate(pUserGroup)
   <select name="section" id="section" >
   <option value="">กรุณาเลือกกลุ่ม/ฝ่าย</option>
   <?
-  $sql = "SELECT * FROM section ";
+  $sql = "SELECT * FROM hd_section ";
   $sresult = mysql_query($sql);
   while($srow=mysql_fetch_array($sresult)){
   ?>

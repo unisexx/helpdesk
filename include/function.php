@@ -64,13 +64,17 @@ function GetPermission($usertype)
   
   
 }
-function DB2Date($Dt)
+function DB2Date($Dt,$timeonly=false)
 { 
 		if($Dt!=NULL && $Dt!="0000-00-00 00:00:00"){
-			list($date,$time) = explode(" ",$Dt);
-			list($y,$m,$d)   = explode("-",$date);
+			@list($date,$time) = explode(" ",$Dt);
+			@list($y,$m,$d)   = explode("-",$date);
 	                $showtime = ($time)?$time:'';
-			return $d."/".$m."/".($y+543);
+			if($timeonly == 'timeonly'){
+				return $time;
+			}else{
+				return $d."/".$m."/".($y+543);
+			}
 		}else{ 
 			return ""; }
 }
@@ -291,7 +295,7 @@ function GetAgencie($id){
 
 	$sql="select b.divisionname as divisionname ,c.groupname as groupname  from informent a";
 	$sql .=" left join division b on a.divisionid=b.id";
-	$sql .=" left join section c on  b.id=c.divisionid";
+	$sql .=" left join hd_section c on  b.id=c.divisionid";
 	$sql .=" where a.id='".$id."'";
 	$result=mysql_query($sql);
 	$item=mysql_fetch_assoc($result);

@@ -3,8 +3,6 @@
 	  include "include/config.php";
 	  include "include/function.php";	 
 	  include "include/class_userlogin.php";
-	 
-
 	  db_connect();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -25,7 +23,6 @@
 	
 	switch(@$_GET['act'])
 	{
-			
 			case 'form':
 				switch($_SESSION['usertype'])
 				{
@@ -52,7 +49,9 @@
 				include "request_list/save.php";
 				break;
 			case 'del':	
-				
+				include "request_list/save.php";
+				break;
+			case 'save':
 				include "request_list/save.php";
 				break;
 			default :

@@ -1,12 +1,10 @@
-
 <?php  
-	  include "../include/session_config.php";
-	  include "../include/config.php";
-	  include "../include/function.php";
-	  include "../include/class_userlogin.php";
+	  // include "../include/session_config.php";
+	  // include "../include/config.php";
+	  // include "../include/function.php";
+	  // include "../include/class_userlogin.php";
 	  $list=new UserLogin();
-
-		db_connect();
+	  // db_connect();
 $path="../uploads/file/";	
 // set notifybar
  $_SESSION["show"]="show";
@@ -36,11 +34,11 @@ function get_detail($id,$method=false)
 			$item=mysql_fetch_assoc($result);
 			
 			$str=array("code"=>$_POST['code'],"problemtype"=>$_POST['problemtype'],"title"=>$_POST['title'],"status"=>$_POST['status'],"chk_send"=>@$_POST['chk_send']
-					   ,"send_note"=>$_POST['send_note']
+					   ,"send_note"=>@$_POST['send_note']
 					   ,"active_date"=>$_POST['active_date'],"send_date"=>$_POST['send_date'],"new_date"=>$_POST['new_date']
 					   ,"operation_date"=>$_POST['operation_date'],"complete_date"=>$_POST['complete_date']
-					   ,"systemid"=>$_POST['systemid'],"orderid"=>$_POST['orderid'],"responsibleid"=>$_POST['responsibleid'],"coordinatorid"=>$_POST['coordinatorid']
-					   ,"ownid"=>$_POST['ownid'],"service"=>@$_POST['service'],"system_success"=>$_POST['system_success'],"response_success"=>$_POST['response_success']
+					   ,"systemid"=>$_POST['systemid'],"orderid"=>$_POST['orderid'],"responsibleid"=>@$_POST['responsibleid'],"coordinatorid"=>@$_POST['coordinatorid']
+					   ,"ownid"=>$_POST['ownid'],"service"=>@$_POST['service'],"system_success"=>$_POST['system_success'],"response_success"=>@$_POST['response_success']
 						);		
 			
 	
@@ -95,10 +93,7 @@ function get_detail($id,$method=false)
 
 
 
-
-
 if(@$_GET['act']=='delete'){
-   
 	//$detail=get_detail();
 	$detail=get_detail($_GET['id'],"get");
 	mysql_query("DELETE FROM request_lists WHERE id=".$_GET['id']);
@@ -107,12 +102,10 @@ if(@$_GET['act']=='delete'){
 	$item=GetData("request_list_details",$_GET['id']);
 	if($item)
 	{
-		
 		unlink ($path.@$item['fileatth']);
 	}
 	$list->AddLog(41,$detail);
 	ReDirect($host."request_list.php",'top');
-	
 }else{
 	
 //เช็ค status กรณีติีกเสร็จทั้งสองฝ่าย
@@ -208,9 +201,9 @@ if(@$_POST['id']==""){
 			case "1": 	
 			//ผู้รับผิดชอบ
 				$val  ="'".$_POST['problemtype']."','".$_POST['title']."','".$_POST['status']."','".@$_POST['chk_send']."'";						
-				$val .=",'".$_POST['send_note']."'";
+				$val .=",'".@$_POST['send_note']."'";
 				$val .=",'".$_POST['new_date']."','".$_POST['operation_date']."','".$_POST['complete_date']."'";
-				$val .=",'".$_POST['orderid']."','".$_POST['responsibleid']."','".$_POST['coordinatorid']."','".$_POST['systemid']."','".@$_POST['service']."'";
+				$val .=",'".$_POST['orderid']."','".@$_POST['responsibleid']."','".@$_POST['coordinatorid']."','".$_POST['systemid']."','".@$_POST['service']."'";
 				$val .=",'".$_POST['code']."','".@$_POST['send_date']."','".@$_POST['active_date']."'";
 				$val .=",'".@$_POST['system_success']."','".@$_POST['response_success']."',''";
 				$val .=",'".@$_POST['operation_detail']."','".@$_POST['result']."','".@$_POST['test']."','".@$_POST['future']."','".@$_POST['admin_id']."','".@$_POST['rso_name']."','".@$rso_date."','".@$_POST['rso_channel']."'";
@@ -279,7 +272,7 @@ if(@$_POST['id']==""){
 			
 			  if (@$_FILES["fileatth".$i]["error"] > 0)
 				{
-				$error_message = $error_types[$_FILES['fileatth']['error'][$i]];
+				$error_message = @$error_types[@$_FILES['fileatth']['error'][$i]];
 				//echo "size: " .$_FILES["fileatth"]['size'][$i];
 				//echo "Error: " .@$_FILES["fileatth"]["error"][$i] ." :".$error_message. "<br>";
 				//exit;
@@ -309,9 +302,6 @@ if(@$_POST['id']==""){
 
 }
 else{
-	
-
-	
 	$detail=get_detail($_POST['id'],"post");
 	
 	$val  ="id='".$_POST['id']."'";
@@ -342,15 +332,14 @@ else{
 	$val .=",rso_date='".Date2DB(@$_POST['rso_date'])."'";
 	$val .=",rso_channel='".@$_POST['rso_channel']."'";
 	$sql="UPDATE request_lists SET ".$val." WHERE id=".$_POST['id'];	
-	//print($sql);exit;
 	mysql_query($sql)or die("Error update :".mysql_error());
+	
+	// echo @$_POST['operation_detail'];
+	// echo $sql;
 	
     $txt_email="(update)";
 	
 
-   
-   
-   
 	mysql_query("delete from request_list_details where title_id='".$_POST['id']."'") or die("Error delete :".mysql_error());
 	for($i=1;$i<=$_POST['k_before'];$i++){
 
@@ -365,7 +354,7 @@ else{
 		
 	   if($_FILES['fileatth'.$i]['name']==""){
 		   
-		   $arr=$_POST['fileatth'.$i];
+		   $arr=@$_POST['fileatth'.$i];
 	   }else{
 	   	   
 		   $sur = strrchr(@$_FILES["fileatth".$i]["name"], "."); //ตัดนามสกุลไฟล์เก็บไว้
@@ -381,7 +370,7 @@ else{
 			 
 			  if (@$_FILES["fileatth".$i]["error"] > 0)
 				{
-				$error_message = $error_types[$_FILES['fileatth']['error'][$i]];
+				$error_message = @$error_types[@$_FILES['fileatth']['error'][$i]];
 				//echo "size: " .$_FILES["fileatth"]['size'][$i];
 				//echo "Error: " .@$_FILES["fileatth"]["error"][$i] ." :".$error_message. "<br>";
 				//exit;
@@ -502,7 +491,7 @@ $m .="</div>";
 
 		
 		if(@$_POST['chk_send']=="send" || @$_POST['chk_send']=="send_wait"){
-			//ส่งให้เจ้าของระบบ	
+			//ส่งให้เจ้าของระบบ	operation_detail 
 		
 			if($_POST['responsibleid']!=0){
 				$sysid=GetSystem($_POST['orderid'],false);
@@ -535,7 +524,7 @@ $m .="</div>";
 		$i=0;	
 		
 		 //ระบบส่งให้ผู้รับผิดชอบทั้งหมด			
-			if($_POST['responsibleid']==""){
+			if(@$_POST['responsibleid']==""){
 						 
 				//if($_SESSION["usertype"]!=1){
 					$result=mysql_query("select email from informent where usertypeid='1'") or die("Error".mysql_error());					
@@ -556,7 +545,7 @@ $m .="</div>";
 			}
 			$j=$i;
 			//กรณีมีผู้ประสานงาน
-			if($_POST['coordinatorid']!=0){
+			if(@$_POST['coordinatorid']!=0){
 				 $j++;
 				  $str[$j]=GetEmail($_POST['coordinatorid']);
 			}			
@@ -588,8 +577,8 @@ $m .="</div>";
 			###### PHPMailer #### 
 
 			
-			require_once("../PHPMailer_v5.1/class.phpmailer.php");  // ประกาศใช้ class phpmailer กรุณาตรวจสอบ ว่าประกาศถูก path		
-			require_once("../PHPMailer_v5.1/class.smtp.php");  // ประกาศใช้ class phpmailer กรุณาตรวจสอบ ว่าประกาศถูก path	
+			require_once("PHPMailer_v5.1/class.phpmailer.php");  // ประกาศใช้ class phpmailer กรุณาตรวจสอบ ว่าประกาศถูก path		
+			require_once("PHPMailer_v5.1/class.smtp.php");  // ประกาศใช้ class phpmailer กรุณาตรวจสอบ ว่าประกาศถูก path	
 			$mail = new PHPMailer();		
 			$mail->CharSet = "utf-8";  // ในส่วนนี้ ถ้าระบบเราใช้ tis-620 หรือ windows-874 สามารถแก้ไขเปลี่ยนได้                        		
 			$mail->From     = "mail.favouritedesign.com";  //  account e-mail ของเราที่ใช้ในการส่งอีเมล
@@ -600,28 +589,28 @@ $m .="</div>";
 			//$mail->AddAddress('t_auchz@hotmail.com');
 			//$mail->AddAddress('spaical_4@hotmail.com');
 			//$mail->AddAddress('chamroen.n@m-society.go.th');			
-			for($i=0;$i<=count($str);$i++){
-				$mail->AddAddress($str[$i]); 
-			}
-			  		
-			$mail->IsHTML(true);                  // ถ้า E-mail นี้ มีข้อความในการส่งเป็น tag html ต้องแก้ไข เป็น true
-			$mail->Subject     =  $subject;        // หัวข้อที่จะส่ง
-			$mail->Body     = $m;                   // ข้อความ ที่จะส่ง
-			$mail->SMTPDebug = false;
-			$mail->do_debug = 0;
+			// for($i=0;$i<=count($str);$i++){
+				// $mail->AddAddress($str[$i]); 
+			// }
+// 			  		
+			// $mail->IsHTML(true);                  // ถ้า E-mail นี้ มีข้อความในการส่งเป็น tag html ต้องแก้ไข เป็น true
+			// $mail->Subject     =  $subject;        // หัวข้อที่จะส่ง
+			// $mail->Body     = $m;                   // ข้อความ ที่จะส่ง
+			// $mail->SMTPDebug = false;
+			// $mail->do_debug = 0;
 
-			$flgSend = $mail->send();       
-		
-	
-			##### PHPMailer #### 	
-		if(@$flgSend)
-		{								
-			 ReDirect($host."request_list.php",'top');			
-		}
-		else 
-		{
-			print('CANNOT SEND EMAIL');
-		}
+			// $flgSend = $mail->send();       
+// 		
+// 	
+			// ##### PHPMailer #### 	
+			// if(@$flgSend)
+			// {								
+				 ReDirect($host."request_list.php",'top');			
+			// }
+			// else 
+			// {
+				// print('CANNOT SEND EMAIL');
+			// }
 	
 
 

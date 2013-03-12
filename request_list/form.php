@@ -8,9 +8,6 @@ if (isset($_GET['id']))
 	$dd="select new_date,operation_date,send_date,complete_date from request_lists where id=".$rs['id'];	
 	$result=mysql_query($dd) or die("datediff :".mysql_error());
 	$item=mysql_fetch_assoc($result);
-	
-	
-	
 }else{
 	$rs['id']="";
 	$rs['code']="";
@@ -122,8 +119,6 @@ $(document).ready(function() {
       title: "required",	  
       n_orderid: "required",
 	  detail1:"required"	
-	 
-
     },
     messages: {
       systemid: "  กรุณาเลือกระบบ", 
@@ -168,7 +163,7 @@ $(document).ready(function() {
 });
 </script>
 
-<form id="frmedit" action="request_list/save.php" method="post" enctype="multipart/form-data">
+<form id="frmedit" action="request_list.php?act=save" method="post" enctype="multipart/form-data">
 
 <table class="tbadd">
 <tr>
@@ -493,32 +488,32 @@ if(@$_GET['id']!=""){
 </tr> -->
 <tr class="detail">
 	<th>รายละเอียดการดำเนินงาน</th>
-	<td><textarea name="operation_detail" rows="5" cols="72"><?php echo $rs['operation_detail']?></textarea></td>
+	<td><textarea name="operation_detail" rows="5" cols="72"><?php echo @$rs['operation_detail']?></textarea></td>
 </tr>
 <tr class="result">
 	<th>ผลการดำเนินงาน</th>
-	<td><textarea name="result" rows="5" cols="72"><?php echo $rs['result']?></textarea></td>
+	<td><textarea name="result" rows="5" cols="72"><?php echo @$rs['result']?></textarea></td>
 </tr>
 <tr class="test">
 	<th>ผลการทดสอบ</th>
-	<td><textarea name="test" rows="5" cols="72"><?php echo $rs['test']?></textarea></td>
+	<td><textarea name="test" rows="5" cols="72"><?php echo @$rs['test']?></textarea></td>
 </tr>
 <tr class="future">
 	<th>ข้อเสนอแนะในการนำไปสู่การแก้ปัญหาในอนาคต</th>
-	<td><textarea name="future" rows="5" cols="72"><?php echo $rs['future']?></textarea></td>
+	<td><textarea name="future" rows="5" cols="72"><?php echo @$rs['future']?></textarea></td>
 </tr>
 <tr>
 	<th>แจ้งผลการดำเนินงาน</th>
 	<td>
-		ชื่อ - สกุล <input type='text' name='rso_name' value="<?php echo $rs['rso_name']?>" style="width:260px;"> วันที่แจ้ง <input type='text' name='rso_date' class="datepicker" value="<?php echo ($rs['rso_date'] != "0000-00-00")?DB2Date($rs['rso_date']):'';?>"><br>
-		ช่องทางแจ้ง <input type="radio" name="rso_channel" value="tel"   <?php if($rs['rso_channel']=="tel"){echo "checked";}?>/> โทรศัพท์
-		<input type="radio" name="rso_channel" value="email" <?php if($rs['rso_channel']=="email"){echo "checked";}?>/> อีเมล์
-        <input type="radio" name="rso_channel" value="other" <?php if($rs['rso_channel']=="other"){echo "checked";}?>/> อื่นๆ
+		ชื่อ - สกุล <input type='text' name='rso_name' value="<?php echo @$rs['rso_name']?>" style="width:260px;"> วันที่แจ้ง <input type='text' name='rso_date' class="datepicker" value="<?php echo (@$rs['rso_date'] != "0000-00-00")?DB2Date(@$rs['rso_date']):'';?>"><br>
+		ช่องทางแจ้ง <input type="radio" name="rso_channel" value="tel"   <?php if(@$rs['rso_channel']=="tel"){echo "checked";}?>/> โทรศัพท์
+		<input type="radio" name="rso_channel" value="email" <?php if(@$rs['rso_channel']=="email"){echo "checked";}?>/> อีเมล์
+        <input type="radio" name="rso_channel" value="other" <?php if(@$rs['rso_channel']=="other"){echo "checked";}?>/> อื่นๆ
 	</td>
 </tr>
 <tr>
   <th valign="top">ผู้รับผิดชอบ</th>
-  <td><input type="checkbox" name="response_success"value="1" <?php  echo ($rs['response_success']=="1")? "checked":"";?>/> เสร็จ</td>
+  <td><input type="checkbox" name="response_success"value="1" <?php  echo (@$rs['response_success']=="1")? "checked":"";?>/> เสร็จ</td>
 </tr>
 <tr>
   <th valign="top">สนทนา</th>
@@ -526,7 +521,7 @@ if(@$_GET['id']!=""){
   	<u>บันทึกสนทนา</u><br />
     <?php
     	//---------- dear ------------
-		$sql = "select * from request_list_note where request_lists_id = '".$_GET['id']."' order by id asc";
+		$sql = "select * from request_list_note where request_lists_id = '".@$_GET['id']."' order by id asc";
 		
 		$result = mysql_query($sql) or die("Error request_list_note :".mysql_error());
 		while($row = mysql_fetch_assoc($result)){

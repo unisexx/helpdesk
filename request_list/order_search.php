@@ -61,18 +61,18 @@
 		$sql="SELECT a.id as id,a.code as code ,concat(a.name,' ',a.lastname) as name,b.divisionname as division,c. groupname as section,d.usergroupname as groupname";
 		$sql .=" from informent a ";
 		$sql .=" inner join division b on a.divisionid=b.id";
-		$sql .=" inner join section c on a.groupid=c.id";
+		$sql .=" inner join hd_section c on a.groupid=c.id";
 		$sql .=" inner join usergroup d on a.usergroupid=d.id";
 	
 	}else{
 		$sql="SELECT a.id as id,a.code as code ,concat(a.name,' ',a.lastname) as name,b.divisionname as division,c. groupname as section,d.usergroupname as groupname";
 		$sql .=" from informent a ";
 		$sql .=" inner join division b on a.divisionid=b.id";
-		$sql .=" inner join section c on a.groupid=c.id";
+		$sql .=" inner join hd_section c on a.groupid=c.id";
 		$sql .=" inner join usergroup d on a.usergroupid=d.id";
 		$sql .=" WHERE a.usertypeid='3' or a.usertypeid='4'";
 	}
-	echo $sql;
+	// echo $sql;
 	$result=mysql_query($sql);
 	$i=1;
 	while($item=mysql_fetch_assoc($result)):
