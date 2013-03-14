@@ -171,12 +171,10 @@ $(document).ready(function() {
 <td>
 <?php if(isset($_GET['id'])){ ?>
 
-<div style="height:55px;width:160px;float:left">
+<div style="height:55px;width:350px;float:left">
 <img src="images/new.png" width="32" height="32" title="รายการใหม่" align="absmiddle"/>
-
 <span style="display:inline-block;vertical-align:middle">
  <?php 
- 
 		if($rs['chk_send']=="send" || $rs['chk_send']=="send_wait"){
 			if($item['send_date']!="0000-00-00 00:00:00"){
 				echo difftime($item['send_date'],$item['new_date']); 
@@ -186,13 +184,46 @@ $(document).ready(function() {
 				echo difftime($item['operation_date'],$item['new_date']);
 			}
 		}
- 	 
 	?>
 </span>
- <p><?php echo DB2Date($item['new_date']) ?></p>
+ <p>
+ 	<input type="text" name="new_date_stamp" value="<?php echo DB2Date($item['new_date']) ?>" class="datepicker" size="10">	
+ 			<?php
+ 				function split_time($datetime){
+ 					$time = date('H:i:s', strtotime($datetime));
+					$time_arr= explode(":", $time);
+					// $h= $time_arr[0];
+					// $m= $time_arr[1];
+					// $s= $time_arr[2];
+					return $time_arr;
+ 				}
+				$newtime = split_time($item['new_date']);
+				$operationtime = split_time($item['operation_date']);
+				$completetime = split_time($item['complete_date']);
+ 			?>
+ 			เวลา 
+ 			<select name="new_hour">
+            <option value="">ชม.</option>
+            <?php for($i=0;$i<=23;$i++):?>
+            	<option value="<?php echo $i?>" <?php echo ($newtime[0]==$i)?'selected':'';?>><?php echo sprintf("%02d",$i);?></option>
+            <?php endfor;?>
+			</select>:
+			<select name="new_min">
+			<option value="">นาที</option>
+			<?php for($i=0;$i<=59;$i++):?>
+            	<option value="<?php echo $i?>" <?php echo ($newtime[1]==$i)?'selected':'';?>><?php echo sprintf("%02d",$i);?></option>
+            <?php endfor;?>
+			</select>:
+			<select name="new_sec">
+			<option value="">วินาที</option>
+			<?php for($i=0;$i<=59;$i++):?>
+            	<option value="<?php echo $i?>" <?php echo ($newtime[2]==$i)?'selected':'';?>><?php echo sprintf("%02d",$i);?></option>
+            <?php endfor;?>
+			</select>
+ </p>
 </div>
 
-<div style="height:55px;width:160px;float:left ">
+<div style="height:55px;width:350px;float:left ">
     <?php if($rs['chk_send']==""){ ?>
     <img src="images/process.png" width="32" height="32" title="กำลังดำเนินการ" align="absmiddle"/>
    	<?php }else{ ?>
@@ -225,11 +256,53 @@ $(document).ready(function() {
 	
 	?>
     </span>
-    <p><?php echo ($c)? DB2Date($item['send_date']):DB2Date($item['operation_date']); ?></p>
+    <p>
+    	<input type="text" name="operation_date_stamp" value="<?php echo ($c)? DB2Date($item['send_date']):DB2Date($item['operation_date']); ?>" class="datepicker" size="10"> 
+    	เวลา 
+ 			<select name="operation_hour">
+            <option value="">ชม.</option>
+            <?php for($i=0;$i<=23;$i++):?>
+            	<option value="<?php echo $i?>" <?php echo ($operationtime[0]==$i)?'selected':'';?>><?php echo sprintf("%02d",$i);?></option>
+            <?php endfor;?>
+			</select>:
+			<select name="operation_min">
+			<option value="">นาที</option>
+			<?php for($i=0;$i<=59;$i++):?>
+            	<option value="<?php echo $i?>" <?php echo ($operationtime[1]==$i)?'selected':'';?>><?php echo sprintf("%02d",$i);?></option>
+            <?php endfor;?>
+			</select>:
+			<select name="operation_sec">
+			<option value="">วินาที</option>
+			<?php for($i=0;$i<=59;$i++):?>
+            	<option value="<?php echo $i?>" <?php echo ($operationtime[2]==$i)?'selected':'';?>><?php echo sprintf("%02d",$i);?></option>
+            <?php endfor;?>
+			</select>
+    </p>
 </div>  
-    <div style="height:55px;width:160px;float:left">
+    <div style="height:55px;width:350px;float:left">
     <img src="images/complete.png" width="32" height="32" title="เรียบร้อย"  align="absmiddle"/>
-    <p><?php echo DB2Date($item['complete_date']) ?></p>
+    <p>
+    	<input type="text" name="complete_date_stamp" value="<?php echo DB2Date($item['complete_date']) ?>" class="datepicker" size="10"> 
+    	เวลา 
+ 			<select name="complete_hour">
+            <option value="">ชม.</option>
+            <?php for($i=0;$i<=23;$i++):?>
+            	<option value="<?php echo $i?>" <?php echo ($completetime[0]==$i)?'selected':'';?>><?php echo sprintf("%02d",$i);?></option>
+            <?php endfor;?>
+			</select>:
+			<select name="complete_min">
+			<option value="">นาที</option>
+			<?php for($i=0;$i<=59;$i++):?>
+            	<option value="<?php echo $i?>" <?php echo ($completetime[1]==$i)?'selected':'';?>><?php echo sprintf("%02d",$i);?></option>
+            <?php endfor;?>
+			</select>:
+			<select name="complete_sec">
+			<option value="">วินาที</option>
+			<?php for($i=0;$i<=59;$i++):?>
+            	<option value="<?php echo $i?>" <?php echo ($completetime[2]==$i)?'selected':'';?>><?php echo sprintf("%02d",$i);?></option>
+            <?php endfor;?>
+			</select>
+    </p>
     </div>
   
   <?php }else{ ?>
@@ -392,7 +465,7 @@ if(@$_GET['id']!=""){
   <td>
   <?php if($rs['orderid']!=0 || $rs['orderid']!="" ):?>
  	 	<?php  $name=GetUser($rs['orderid'],'order'); echo $name['name']?>
-        <input type="hidden" name="orderid" value="<?php  echo $rs['orderid']?>" />
+        <input type="hidden" name="orderid" value="<?php echo $rs['orderid']?>" />
 
   <?php endif;?>
   <?php if ($rs['orderid']==0 || $rs['orderid']==""): ?>
@@ -505,7 +578,11 @@ if(@$_GET['id']!=""){
 <tr>
 	<th>แจ้งผลการดำเนินงาน</th>
 	<td>
-		ชื่อ - สกุล <input type='text' name='rso_name' value="<?php echo @$rs['rso_name']?>" style="width:260px;"> วันที่แจ้ง <input type='text' name='rso_date' class="datepicker" value="<?php echo (@$rs['rso_date'] != "0000-00-00")?DB2Date(@$rs['rso_date']):'';?>"><br>
+		แจ้งกลับ 
+		<?php if($rs['orderid']!=0 || $rs['orderid']!="" ):?>
+ 	 		<?php  $name=GetUser($rs['orderid'],'order'); echo $name['name']?>
+		<?php endif;?>
+		<!-- <input type='text' name='rso_name' value="<?php echo @$rs['rso_name']?>" style="width:260px;"> --> วันที่แจ้ง <input type='text' name='rso_date' class="datepicker" value="<?php echo (@$rs['rso_date'] != "0000-00-00")?DB2Date(@$rs['rso_date']):'';?>"><br>
 		ช่องทางแจ้ง <input type="radio" name="rso_channel" value="tel"   <?php if(@$rs['rso_channel']=="tel"){echo "checked";}?>/> โทรศัพท์
 		<input type="radio" name="rso_channel" value="email" <?php if(@$rs['rso_channel']=="email"){echo "checked";}?>/> อีเมล์
         <input type="radio" name="rso_channel" value="other" <?php if(@$rs['rso_channel']=="other"){echo "checked";}?>/> อื่นๆ

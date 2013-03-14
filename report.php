@@ -1,7 +1,4 @@
 <?
-	error_reporting(E_ALL);
-	ini_set("display_errors", 1);
-	
   include "include/session_config.php";
   include "include/config.php";
   include "include/function.php";

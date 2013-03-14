@@ -198,8 +198,8 @@ db_connect();
   <th>สถานะ</th>
    <?php if($_SESSION['usertype']=='1' || $_SESSION['usertype']=='2' ): ?>
   <th>ชื่อผู้แจ้ง</th>  
-  <th>ผู้รับผิดชอบ</th>
-  <th>ผู้ประสานงาน</th>
+  <!-- <th>ผู้รับผิดชอบ</th>
+  <th>ผู้ประสานงาน</th> -->
   <th>รายงาน</th>
   <?php endif; ?>
   <th>ลบ</th>
@@ -229,8 +229,8 @@ db_connect();
   <td onclick="window.location='request_list.php?act=form&id=<?php echo $item['id']?>'" style="cursor:pointer;">
   	<?php $rs=GetUser($item['orderid'],'order')?><span title="หน่วยงาน :<?php echo GetDiv($item['orderid'])?><br>เบอร์ติดต่อ :<?php echo $rs['tel']?>" class="vtip"><?php echo $rs['name']; ?></span>
   </td>
-  <td onclick="window.location='request_list.php?act=form&id=<?php echo $item['id']?>'" style="cursor:pointer;"><?php echo GetUser($item['responsibleid'],'response')?></td>
-  <td onclick="window.location='request_list.php?act=form&id=<?php echo $item['id']?>'" style="cursor:pointer;"><?php echo ($item['coordinatorid']==0)?"-": GetUser($item['coordinatorid'],'coor');?></td>
+  <!-- <td onclick="window.location='request_list.php?act=form&id=<?php echo $item['id']?>'" style="cursor:pointer;"><?php echo GetUser($item['responsibleid'],'response')?></td>
+  <td onclick="window.location='request_list.php?act=form&id=<?php echo $item['id']?>'" style="cursor:pointer;"><?php echo ($item['coordinatorid']==0)?"-": GetUser($item['coordinatorid'],'coor');?></td> -->
   <?php endif; ?>
   <td><a href="request_list_report.php?id=<?php echo $item['id'];?>" target="_blank"><img src="images/reports-icon" width="24" height="24"></a></td>
   <td>

@@ -302,8 +302,12 @@ if(@$_POST['id']==""){
 
 }
 else{
-	$detail=get_detail($_POST['id'],"post");
 	
+	$_POST['new_date'] = Date2DB(@$_POST['new_date_stamp']).' '.$_POST['new_hour'].':'.$_POST['new_min'].':'.$_POST['new_sec'];
+	$_POST['operation_date'] = Date2DB(@$_POST['operation_date_stamp']).' '.$_POST['operation_hour'].':'.$_POST['operation_min'].':'.$_POST['operation_sec'];
+	$_POST['complete_date'] = Date2DB(@$_POST['complete_date_stamp']).' '.$_POST['complete_hour'].':'.$_POST['complete_min'].':'.$_POST['complete_sec'];
+	
+	$detail=get_detail($_POST['id'],"post");
 	$val  ="id='".$_POST['id']."'";
 	$val .=",problemtype='".$_POST['problemtype']."'";
 	$val .=",status='".$_POST['status']."'";
