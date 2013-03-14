@@ -156,9 +156,9 @@ $(document).ready(function() {
 <div id="btnBox"><input type="submit" value="พิมพ์รายงาน"  class="btn_print" /></div>
 <div id="titleReport">
 	<?php 
-		echo ($_GET['s_system']!="")? Systemname(@$_GET['s_system']):"";
-		echo ($_GET['sdate']!="")? " ตั้งแต่วันที่ ".@$_GET['sdate']:"";
-		echo ($_GET['edate']!="")? " ถึงวันที่ ".@$_GET['edate']:"";
+		echo (@$_GET['s_system']!="")? Systemname(@$_GET['s_system']):"";
+		echo (@$_GET['sdate']!="")? " ตั้งแต่วันที่ ".@$_GET['sdate']:"";
+		echo (@$_GET['edate']!="")? " ถึงวันที่ ".@$_GET['edate']:"";
 	?>
 	
 </div>

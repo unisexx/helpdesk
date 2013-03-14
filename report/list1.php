@@ -69,7 +69,7 @@ $(document).ready(function() {
 	
 			
 			
-			if($_GET['s_month']==""){		
+			if(@$_GET['s_month']==""){		
 					$_GET['s_month']=get_m();
 					$s_month=$_GET['s_month'];				
 			}else{
@@ -78,7 +78,7 @@ $(document).ready(function() {
 			
 			
 			
-			if($_GET['s_year']==""){			
+			if(@$_GET['s_year']==""){			
 					$_GET['s_year']=get_y();
 					$s_year=$_GET['s_year'];
 							
@@ -87,7 +87,7 @@ $(document).ready(function() {
 				
 			}
 			
-			if($_GET['s_system']==""){				
+			if(@$_GET['s_system']==""){				
 					$_GET['s_system']=get_s();
 					$sysid=$_GET['s_system'];
 				}else {
