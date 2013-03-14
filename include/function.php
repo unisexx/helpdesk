@@ -34,7 +34,7 @@ function GetOne($field,$f_id,$id,$tb){
 		 while($row=mysql_fetch_assoc($result)){
 			$item=$row[$field];
 		 }	 
-	 	return  $item;
+	 	return  @$item;
 	 }else{
 	 	return NULL;
 	 }

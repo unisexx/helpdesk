@@ -1,10 +1,10 @@
 <?php
 
-  include "../include/session_config.php";
-  include "../include/config.php";
-  include "../include/function.php";
-  include "../include/class_userlogin.php";
-  db_connect();
+  // include "../include/session_config.php";
+  // include "../include/config.php";
+  // include "../include/function.php";
+  // include "../include/class_userlogin.php";
+  // db_connect();
    $pm= New UserLogin();
    $_SESSION["show"]="show";
    
@@ -102,8 +102,8 @@
 						$detail[]="กอง/สำนักจาก ".$name1['divisionname']." เป็น ".$name2['divisionname'];
 						break;
 					case "GroupID";
-						$name1['groupname']=($item['GroupID']!="0")? GetOne("groupname","id",$item['GroupID'],"section"):"";
-						$name2['groupname']=($_POST['section']!="") ? GetOne("groupname","id",$_POST['section'],"section"):"";
+						$name1['groupname']=($item['GroupID']!="0")? GetOne("groupname","id",$item['GroupID'],"hd_section"):"";
+						$name2['groupname']=($_POST['section']!="") ? GetOne("groupname","id",$_POST['section'],"hd_section"):"";
 						
 						$detail[]="กลุ่ม/ฝ่ายจาก ".$name1['groupname']." เป็น ".$name2['groupname'];
 						break;

@@ -39,9 +39,10 @@
 /*			if(!isset($_SESSION["show"])){	
 				$pm->AddLog(34);
 			}*/
-			include "user/list.php";   
-		
-          
+			include "user/list.php";
+		break;
+		case 'insert':
+			include "user/query.php";  
 		break;
 		default :
 /*			if(!isset($_SESSION["show"])){	

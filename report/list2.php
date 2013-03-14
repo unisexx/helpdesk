@@ -129,7 +129,7 @@ $(document).ready(function() {
   </tr>
   <tr>
     <td>1</td>
-    <td>งานแก้ไขข้อผิดพลาด</td>
+    <td>By App</td>
     <?php
 
   	$result=mysql_query("SELECT * from request_lists where systemid='".$sysid."' AND month(new_date)=".$s_month." and year(new_date)='".$s_year."' and problemtype='1'"); 
@@ -141,7 +141,7 @@ $(document).ready(function() {
   </tr>
   <tr>
     <td>2</td>
-    <td>งานปรับปรุงเพิ่มเติม</td>
+    <td>By User</td>
     <?php
 
   	$result=mysql_query("SELECT * from request_lists where systemid='".$sysid."' AND month(new_date)=".$s_month." and year(new_date)='".$s_year."' and problemtype='2'"); 
@@ -153,7 +153,7 @@ $(document).ready(function() {
   </tr>
   <tr>
     <td>3</td>
-    <td>งานสอบถาม</td>
+    <td>Hardware</td>
      <?php
 
   	$result=mysql_query("SELECT * from request_lists where systemid='".$sysid."' AND month(new_date)=".$s_month." and year(new_date)='".$s_year."' and problemtype='3'"); 
@@ -165,10 +165,22 @@ $(document).ready(function() {
   </tr>
   <tr>
     <td>4</td>
-    <td>งานอื่นๆ</td>
+    <td>Network</td>
     <?php
 
   	$result=mysql_query("SELECT * from request_lists where systemid='".$sysid."' AND month(new_date)=".$s_month." and year(new_date)='".$s_year."' and problemtype='4'"); 
+	$num=mysql_num_rows($result);  
+  	?>     
+    <td><?php echo $num ?></td>
+    <input type="hidden" name="list_3" value="<?php echo $num ?>" />
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>Other</td>
+    <?php
+
+  	$result=mysql_query("SELECT * from request_lists where systemid='".$sysid."' AND month(new_date)=".$s_month." and year(new_date)='".$s_year."' and problemtype='5'"); 
 	$num=mysql_num_rows($result);  
   	?>     
     <td><?php echo $num ?></td>

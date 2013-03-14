@@ -29,7 +29,7 @@ $service = array('tel'=>'โทรศัพท์','sys'=>'ระบบ','email'
       <tr>
         <td><table width="100%" border="0" cellpadding="3" cellspacing="3">
           <tr>
-            <td><p>วันที่รับแจ้ง <span class="fill"><?php echo DB2Date($req['new_date'])?></span> เวลา <span class="fill"><?php echo DB2Date($req['new_date'],'timeonly')?> น.</span> วันที่ดำเนินการ <span class="fill"><?php echo DB2Date($req['active_date'])?></span> เวลา <span class="fill"><?php echo DB2Date($req['active_date'],'timeonly')?> น.</span> วันที่เรียบร้อย <span class="fill"><?php echo DB2Date($req['complete_date'])?></span> เวลา <span class="fill"><?php echo DB2Date($req['complete_date'],'timeonly')?> น.</span> </p>
+            <td><p>วันที่รับแจ้ง <span class="fill"><?php echo DB2Date($req['new_date'])?></span> เวลา <span class="fill"><?php echo DB2Date($req['new_date'],'timeonly')?> น.</span> วันที่ดำเนินการ <span class="fill"><?php echo DB2Date($req['operation_date'])?></span> เวลา <span class="fill"><?php echo DB2Date($req['active_date'],'timeonly')?> น.</span> วันที่เรียบร้อย <span class="fill"><?php echo DB2Date($req['complete_date'])?></span> เวลา <span class="fill"><?php echo DB2Date($req['complete_date'],'timeonly')?> น.</span> </p>
               <p>รหัส <span class="fill"><?php echo $req['code']?></span> ระบบ <span class="fill"><?php echo $req['SystemName']?></span> สถานะ <span class="fill"><?php echo $req['statusname']?></span> ช่องทางแจ้ง <span class="fill"><?php echo $service[$req['service']]?></span>
               <p>เรื่อง / ประเภทปัญหา : <span class="fill"><?php echo $req['title']?></span></p>
               <p>รายละเอียด</p>
@@ -57,7 +57,7 @@ $service = array('tel'=>'โทรศัพท์','sys'=>'ระบบ','email'
         <td><table width="100%" border="0" cellpadding="3" cellspacing="3">
           <tr>
             <td><p>ระบุประเภทปัญหา สาเหตุ <span class="fill"><?php echo $req['ProblemName']?></span></p>
-              <p>วันที่ดำเนินการ <span class="fill"><?php echo DB2Date($req['active_date'])?></span> </p>
+              <p>วันที่ดำเนินการ <span class="fill"><?php echo DB2Date($req['operation_date'])?></span> </p>
               <p>รายละเอียดการดำเนินงาน </p>
               <p><span class="fill"><?php echo $req['operation_detail']?></span></p>
               <p>ผลการดำเนินการ</p>

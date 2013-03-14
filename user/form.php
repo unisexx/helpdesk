@@ -282,7 +282,7 @@ function CheckForValidate(pUserGroup)
 
 <h3>ข้อมูลผู้แจ้ง (เพิ่ม / แก้ไข)</h3>
 
-<form name="frmedit" id="frmedit" class="commentForm"  action="user/query.php?act=insert&id=<?php echo @$_GET['id']?>&chk_del=<?php echo $item_10['CanDelete'];?>&chk_edit=<?php echo $item_10['CanEdit']; ?>&chk_add=<?php echo $item_10['CanAdd'] ?>"  method="post">
+<form name="frmedit" id="frmedit" class="commentForm"  action="user.php?act=insert&id=<?php echo @$_GET['id']?>&chk_del=<?php echo $item_10['CanDelete'];?>&chk_edit=<?php echo $item_10['CanEdit']; ?>&chk_add=<?php echo $item_10['CanAdd'] ?>"  method="post">
 <table class="tbadd">
 <tr>
   <th>ประเภทผู้ใช้งาน  <span class="Txt_red_12">*</span></th>
