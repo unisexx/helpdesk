@@ -362,7 +362,7 @@ function CheckForValidate(pUserGroup)
   <th>กอง/สำนัก<span class="Txt_red_12">*</span></th>
   <td>
   <div  id="dvDivisionList">
-  <select name="division" id="division" onchange="ReloadSectionList(this.value)">
+  <select name="division" id="division" onchange="ReloadSectionList(this.value)" <?php echo ($_GET['id'])?'':'disabled';?>>
   <option value="">กรุณากอง/สำนัก</option>
   <?
   $sql = "SELECT * FROM division ";
@@ -381,7 +381,7 @@ function CheckForValidate(pUserGroup)
   <th>กลุ่ม/ฝ่าย<span class="Txt_red_12">*</span></th>
   <td>
   <div id="dvsectionlist">
-  <select name="section" id="section" >
+  <select name="section" id="section" <?php echo ($_GET['id'])?'':'disabled';?>>
   <option value="">กรุณาเลือกกลุ่ม/ฝ่าย</option>
   <?
   $sql = "SELECT * FROM hd_section ";
