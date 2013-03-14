@@ -639,7 +639,7 @@ else
 		
 		mysql_query($sql) or die("Insert hd_section:".mysql_error());
 		
-		$sql = "SELECT ID FROM hd_section WHERE GroupName='".$_POST['txtGroupName']."' ";
+		$sql = "SELECT * FROM hd_section order by id desc";
 		$result = mysql_query($sql);
 		$row = mysql_fetch_array($result);
 		

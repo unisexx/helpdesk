@@ -114,7 +114,7 @@ if(@$_GET['id']!='')$row = GetData('hd_section',@$_GET['id']);
   <th>ชื่อกอง/สำนัก <span class="Txt_red_12">*</span></th>
   <td>
   <div id="dvDivisionList">
-  <select name="division" id="division">
+  <select name="division" id="division" <?php echo ($_GET['id'])?'':'disabled';?>>
   <option value="">กรุณาเลือกกอง/สำนัก</option>
   <?
   $sql = "SELECT * FROM division ";

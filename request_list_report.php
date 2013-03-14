@@ -26,22 +26,15 @@ $details = $db->GetAll('select * from request_list_details where title_id = '.$_
         <td><table width="100%" border="0" cellpadding="3" cellspacing="3">
           <tr>
             <td><p>วันที่รับแจ้ง <span class="fill"><?php echo DB2Date($req['new_date'])?></span> เวลา <span class="fill"><?php echo DB2Date($req['new_date'],'timeonly')?> น.</span> วันที่ดำเนินการ <span class="fill"><?php echo DB2Date($req['active_date'])?></span> เวลา <span class="fill"><?php echo DB2Date($req['active_date'],'timeonly')?> น.</span> วันที่เรียบร้อย <span class="fill"><?php echo DB2Date($req['complete_date'])?></span> เวลา <span class="fill"><?php echo DB2Date($req['complete_date'],'timeonly')?> น.</span> </p>
-              <p>รหัส .......................... ระบบ ............................... สถานะ
-                <input type="checkbox" name="checkbox7" value="checkbox" />
-                รายการใหม่
-  <input type="checkbox" name="checkbox" value="checkbox" />
-                กำลังดำเนินการ
-  <input type="checkbox" name="checkbox2" value="checkbox" />
-                เรียบร้อย
-  <input type="checkbox" name="checkbox3" value="checkbox" />
-                แจ้งกลับแล้ว</p>
+              <p>รหัส <span class="fill"><?php echo $req['code']?></span> ระบบ ............................... สถานะ
+				<input type="checkbox" name="checkbox7" value="checkbox" /> รายการใหม่
+				<input type="checkbox" name="checkbox" value="checkbox" />  กำลังดำเนินการ
+				<input type="checkbox" name="checkbox2" value="checkbox" /> เรียบร้อย
+				<input type="checkbox" name="checkbox3" value="checkbox" /> แจ้งกลับแล้ว</p>
               <p>ช่องทางแจ้ง
-                <input type="checkbox" name="checkbox4" value="checkbox" />
-                โทรศัพท์
-  <input type="checkbox" name="checkbox5" value="checkbox" />
-                e-mail
-  <input type="checkbox" name="checkbox6" value="checkbox" />
-                อื่น ๆ (ระบุ)  ..............................................................................................................</p>
+                <input type="checkbox" name="checkbox4" value="checkbox" /> โทรศัพท์
+				<input type="checkbox" name="checkbox5" value="checkbox" /> e-mail
+				<input type="checkbox" name="checkbox6" value="checkbox" /> อื่น ๆ (ระบุ)  ..............................................................................................................</p>
               <p>เรื่อง / ประเภทปัญหา : <span class="fill"><?php echo $req['title']?></span></p>
               <p>รายละเอียด</p>
               <?php if($details):?>
@@ -80,19 +73,13 @@ $details = $db->GetAll('select * from request_list_details where title_id = '.$_
               อื่น ๆ..........</p>
               <p>วันที่ดำเนินการ .................................. </p>
               <p>รายละเอียดการดำเนินงาน </p>
-              <p>...................................................................................................................................................................................................</p>
-              <p>...................................................................................................................................................................................................</p>
+              <p><span class="fill"><?php echo $req['operation_detail']?></span></p>
               <p>ผลการดำเนินการ</p>
-              <p>...................................................................................................................................................................................................</p>
-              <p>...................................................................................................................................................................................................</p>
+              <p><span class="fill"><?php echo $req['result']?></span></p>
               <p>ผลการทดสอบ</p>
-              <p>...................................................................................................................................................................................................</p>
-              <p>...................................................................................................................................................................................................<br />
-              </p>
+              <p><span class="fill"><?php echo $req['test']?></span></p>
               <p>ข้อเสนอแนะในการนำไปสู่การแก้ปัญหาในอนาคต</p>
-              <p>...................................................................................................................................................................................................</p>
-              <p>...................................................................................................................................................................................................<br />
-              </p></td>
+              <p><span class="fill"><?php echo $req['future']?></span></p></td>
           </tr>
         </table></td>
       </tr>
