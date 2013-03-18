@@ -91,8 +91,8 @@ $service = array('tel'=>'โทรศัพท์','sys'=>'ระบบ','email'
                     อื่น ๆ..............................<br /> -->
                   </p>
                 <p>&nbsp;</p>
-                <p align="center">ลงชื่อ <span class="fill">สาโรจน์ อุธทา</span><br />
-                  (<span class="fill">นายสาโรจน์ อุธทา</span>)<br />
+                <p align="center">ลงชื่อ <span class="fill">สาโรจน์ อุทธา</span><br />
+                  (<span class="fill">นายสาโรจน์ อุทธา</span>)<br />
                   วันที่ <span class="fill"><?php echo DB2Date($req['rso_date'])?></span> </p></td>
             </tr>
         </table></td>
