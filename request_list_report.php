@@ -17,9 +17,10 @@ $service = array('tel'=>'โทรศัพท์','sys'=>'ระบบ','email'
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>รายงานการแจ้งปัญหาใช้ระบบงาน</title>
+<title>แบบฟอร์มการรับแจ้งปัญหา / การให้บริการ การบริหารจัดการระบบสารสนเทศ สป.พม.</title>
 </head>
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onload="window.print();">
+<span style="float: right;">IT Helpdesk 01</span>
 <table width="800" border="0" align="center">
   <tr>
     <td><font style="font-size:20px"><strong>แบบฟอร์มการรับแจ้งปัญหา / การให้บริการ</strong></font></td>
@@ -91,8 +92,8 @@ $service = array('tel'=>'โทรศัพท์','sys'=>'ระบบ','email'
                     อื่น ๆ..............................<br /> -->
                   </p>
                 <p>&nbsp;</p>
-                <p align="center">ลงชื่อ <span class="fill">สาโรจน์ อุธทา</span><br />
-                  (<span class="fill">นายสาโรจน์ อุธทา</span>)<br />
+                <p align="center">ลงชื่อ <span class="fill">สาโรจน์ อุทธา</span><br />
+                  (<span class="fill">นายสาโรจน์ อุทธา</span>)<br />
                   วันที่ <span class="fill"><?php echo DB2Date($req['rso_date'])?></span> </p></td>
             </tr>
         </table></td>
