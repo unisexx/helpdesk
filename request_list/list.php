@@ -69,26 +69,22 @@ db_connect();
 		   //var_dump($sql);
 		  // $sql .="ORDER BY a.id";
 	   }
-	   
 	   		
 			// ????? superadmin ต้องติ๊กเห็นหมดไหม หรือไม่ต้องติ็กก็เห็น
 			$view="select canaccessall from usergroup where canaccessall='1' and id=".$_SESSION['usergroupid'];
 			$result=mysql_query($view) or die ("Error:".mysql_error());
 			$item=mysql_fetch_assoc($result);
 				if($_SESSION['usergroupid']=="2"){
-						//supeamdin
+						//supeamdin เห็นหมด
 						$sql="select a.* from request_lists a ";
-						$sql .=" where  systemid in(select b.systemid from informent c left join user_systems b on c.id=b.userid where b.userid='".$_SESSION['id']."')";
+						// $sql .=" where  systemid in(select b.systemid from informent c left join user_systems b on c.id=b.userid where b.userid='".$_SESSION['id']."')";
 						$sql .=$p_name.$p_system.$p_newdate.$p_status.$p_title;
-						
-					
 				}else{
 					//ไม่ใช่ super admin เแสดงมดต ามขอบเขต system	
 					if($item['canaccessall']=="1"){
 						$sql="select a.* from request_lists a ";
 						$sql .=" where  systemid in(select b.systemid from informent c left join user_systems b on c.id=b.userid where b.userid='".$_SESSION['id']."')";
 						$sql .=$p_name.$p_system.$p_newdate.$p_status.$p_title;
-						
 					}
 				}
 	 
@@ -114,6 +110,7 @@ db_connect();
                  $sql .= "  ORDER BY a.id DESC  LIMIT $page_start, $per_page"; 
 
                 $result_1 = mysql_query($sql) or die("Invalid query: " . mysql_error()); 
+				// echo $sql;
 ?>
 
 <span style="font-size:12px;">มีทั้งหมด <?=$num_rows;?> รายการ  / <?=$num_pages;?> หน้า </span><div id="pagenavi" ></div>
