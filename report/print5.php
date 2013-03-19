@@ -28,17 +28,15 @@ $_POST['edate']=(isset($_POST['edate']))? " ถึง ".$_POST['edate']:"";
 $_POST['sdate']=(isset($_POST['sdate']))? " วันที่ " .$_POST['sdate']:"";
 
 ?>
-<div id="page"> 
-<div class="clear"></div>
-<div style="width:800px; height:103px; position:relative;">
+<div style="text-align: right;">IT Helpdesk 03</div>
+<!-- <div style="width:800px; height:103px; position:relative;">
 <img src="../images/fd_head.gif" />
 <div style="clear:both;"></div>
 <div style="position:absolute; top:44px; right:100px;text-align:right;color:#999">รายงานรายละเอียดการรับแจ้งปัญหา <?php echo $sysname .'<br /> '.$_POST['sdate'].$_POST['edate']?></div>
-</div><!-- img -->
+</div>  -->
 <div id="title">
 รายงานรายละเอียดการรับแจ้งปัญหา <?php echo $sysname .'<br /> '.$_POST['sdate'].$_POST['edate']?></div>
 <p><label class="headtitle">สรุปการรับแจ้งปัญหา</label></p>
-<div style="height:300px;">
 <table class="tbfilename">
 <tr>
 <th>ลำดับ</th>
@@ -70,7 +68,6 @@ $_POST['sdate']=(isset($_POST['sdate']))? " วันที่ " .$_POST['sdate'
 <?php endwhile; ?>
 
 </table>
-</div>
 <p><label class="headtitle">ข้อเสนอแนะอื่นๆ</label></p>
 <div style="height:226px;">
 	<p><span class="botline" style="width:100%"></span></p>
@@ -86,13 +83,10 @@ $_POST['sdate']=(isset($_POST['sdate']))? " วันที่ " .$_POST['sdate'
   <label>ลงชื่อผู้ดูแลระบบ</label>
   <span class="underline" style="width:155px;"></span>
 </p>
-<div class="clear"></div>  
+<!-- <div class="clear"></div>  
 <div style="width:800px; height:103px;bottom:0px;">
 <img src="../images/fd_foot.gif" width="800"/>
-</div>
-</div>
-
-</div><!-- page -->
+</div> -->
 </body>
 </html>
 <?php

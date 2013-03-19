@@ -22,14 +22,11 @@
 </head>
 
 <body onload="window.print();">
-
-<div id="page">
-<div class="clear"></div>
-<div style="width:800px; height:103px; position:relative;">
+<div style="text-align: right;">IT Helpdesk 02-2</div>
+<!-- <div style="width:800px; height:103px; position:relative;">
 <img src="../images/fd_head.gif" width="800" />
 <div style="clear:both;"></div>
-<div style="position:absolute;float:right; top:44px; right:100px;text-align:right;color:#999">รายงานสรุปการรับแจ้งปัญหา <?php echo $_POST['sysname'] .'<br /> ประจำเดือน '.$_POST['s_month']."".$_POST['s_year']?></div>
-</div><!-- img -->
+<div style="position:absolute;float:right; top:44px; right:100px;text-align:right;color:#999">รายงานสรุปการรับแจ้งปัญหา <?php echo $_POST['sysname'] .'<br /> ประจำเดือน '.$_POST['s_month']."".$_POST['s_year']?></div> -->
 <div id="title">รายงานสรุปการรับแจ้งปัญหา <?php echo $_POST['sysname'] .'<br /> ประจำเดือน '.$_POST['s_month']."".$_POST['s_year']?></div>
 <p><label class="headtitle">สรุปการรับแจ้งปัญหา</label></p>
 <div>
@@ -89,21 +86,16 @@
   <span class="underline" style="width:155px;"></span>
   <label>ลงชื่อผู้ดูแลระบบ</label>
   <span class="underline" style="width:155px;"></span></p>
-<div class="clear"></div>  
+<!-- <div class="clear"></div>  
 <div style="width:800px; height:103px;bottom:0px;">
 <img src="../images/fd_foot.gif" width="800" />
+</div> -->
 </div>
-</div>
-</body>
-</html>
 <?php
 }else{
 		Alert($alert_export);
 		ReDirect($host."report.php?act=list1",'top');
-		
-	}
-		
-		
-		
-		
+}
 ?>
+</body>
+</html>

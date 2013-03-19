@@ -192,7 +192,7 @@ if(@$_POST['id']==""){
 	$field .=",new_date,operation_date,complete_date";
 	$field .=",orderid,responsibleid,coordinatorid,systemid";
 	$field .=",service,code,send_date,active_date,system_success,response_success,ownid";
-	$field .=",operation_detail,result,test,future,admin_id,rso_name,rso_date,rso_channel";
+	$field .=",operation_detail,result,test,future,admin_id,rso_name,rso_date,rso_channel,servicetype_id";
 				
 	$rso_date = ($_POST['rso_date'])?Date2DB($_POST['rso_date']):''; 
 	// echo $_SESSION['usertype'];
@@ -206,7 +206,7 @@ if(@$_POST['id']==""){
 				$val .=",'".$_POST['orderid']."','".@$_POST['responsibleid']."','".@$_POST['coordinatorid']."','".$_POST['systemid']."','".@$_POST['service']."'";
 				$val .=",'".$_POST['code']."','".@$_POST['send_date']."','".@$_POST['active_date']."'";
 				$val .=",'".@$_POST['system_success']."','".@$_POST['response_success']."',''";
-				$val .=",'".@$_POST['operation_detail']."','".@$_POST['result']."','".@$_POST['test']."','".@$_POST['future']."','".@$_POST['admin_id']."','".@$_POST['rso_name']."','".@$rso_date."','".@$_POST['rso_channel']."'";
+				$val .=",'".@$_POST['operation_detail']."','".@$_POST['result']."','".@$_POST['test']."','".@$_POST['future']."','".@$_POST['admin_id']."','".@$_POST['rso_name']."','".@$rso_date."','".@$_POST['rso_channel']."','".@$_POST['servicetype_id']."'";
 				break;
 			
 			case "2": 	
@@ -322,6 +322,7 @@ else{
 	$val .=",coordinatorid='".@$_POST['coordinatorid']."'";
 	$val .=",systemid='".@$_POST['systemid']."'";
 	$val .=",service='".@$_POST['service']."'";
+	$val .=",title='".@$_POST['title']."'";
 	$val .=",code='".@$_POST['code']."'";
 	$val .=",active_date='".@$_POST['active_date']."'";
 	$val .=",system_success='".@$_POST['system_success']."'";
@@ -335,6 +336,7 @@ else{
 	$val .=",rso_name='".@$_POST['rso_name']."'";
 	$val .=",rso_date='".Date2DB(@$_POST['rso_date'])."'";
 	$val .=",rso_channel='".@$_POST['rso_channel']."'";
+	$val .=",servicetype_id='".@$_POST['servicetype_id']."'";
 	$sql="UPDATE request_lists SET ".$val." WHERE id=".$_POST['id'];	
 	mysql_query($sql)or die("Error update :".mysql_error());
 	

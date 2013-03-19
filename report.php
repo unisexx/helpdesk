@@ -18,22 +18,18 @@
 <? include "_menu.php" ?>
 <div id="page">
 <? 
-
 	$action= new UserLogin();
 	
 	$item_8=$action->GetPermission(10);
 	if($item_8==""){$item_8['CanView']="";}
 	
 	
-
 	switch(@$_GET['act'])
 	{
 			case 'query':
 				include "report/query.php";
 			break;
-					
 			case 'list1':
-			
 				if($item_8['CanView']=="1"){
 					if(!isset($_SESSION["show"])){	
 						
@@ -41,10 +37,8 @@
 						$action->AddLog(28,$detail);
 					}
 				}
-						include "report/list1.php";
-				
+				include "report/list1.php";
 			break;
-			
 			case 'list2':
 				if($item_8['CanView']=="1"){
 				if(!isset($_SESSION["show"])){	
@@ -52,9 +46,7 @@
 						$action->AddLog(28,$detail);
 					}
 				}
-					include "report/list2.php";
-				
-						
+				include "report/list2.php";
 			break;
 
 			case 'list3':
@@ -64,13 +56,8 @@
 						$action->AddLog(28,$detail);
 					}
 				}
-				
-				
-					include "report/list3.php";
-
-				
-				break;
-			
+				include "report/list3.php";
+			break;
 			case 'list4':
 				if($item_8['CanView']=="1"){
 				if(!isset($_SESSION["show"])){	
@@ -78,13 +65,8 @@
 						$action->AddLog(28,$detail);
 					}
 				}
-				
-			
-					include "report/list4.php";
-
-				
+				include "report/list4.php";
 			break;
-						
 			case 'list5':
 				if($item_8['CanView']=="1"){
 				if(!isset($_SESSION["show"])){	
@@ -92,23 +74,17 @@
 						$action->AddLog(28,$detail);
 					}
 				}
-				
-			
-					include "report/list5.php";
-
-				
+				include "report/list5.php";
 			break;
-
+			case 'list6':
+				include "report/list6.php";
+			break;
 			case 'form4':
-				
-					
 					include "report/form4.php";
-						
 			break;
-			
-      case 'query4':
-        include "report/query4.php";
-       break;
+			case 'query4':
+				include "report/query4.php";
+			break;
 	}
 ?>
 </div>

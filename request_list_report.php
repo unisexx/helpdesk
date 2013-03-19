@@ -20,7 +20,8 @@ $service = array('tel'=>'โทรศัพท์','sys'=>'ระบบ','email'
 <title>แบบฟอร์มการรับแจ้งปัญหา / การให้บริการ การบริหารจัดการระบบสารสนเทศ สป.พม.</title>
 </head>
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onload="window.print();">
-<span style="float: right;">IT Helpdesk 01</span>
+<div align="right">IT Helpdesk 01</div>
+<div align="center"><h3>แบบฟอร์มการรับแจ้งปัญหา / การให้บริการ<br>การบริหารจัดการระบบสารสนเทศ สป.พม. </h3></div>
 <table width="800" border="0" align="center">
   <tr>
     <td><font style="font-size:20px"><strong>แบบฟอร์มการรับแจ้งปัญหา / การให้บริการ</strong></font></td>

@@ -386,6 +386,18 @@ $(document).ready(function() {
   </td>
 </tr>
 <tr>
+  <th>ประเภทบริการ</th>  
+  <td>
+  	<?php 			
+		$sql="SELECT  * FROM servicetype order by id"; 
+		$result=mysql_query($sql);
+    ?>
+	<?php while($item =mysql_fetch_assoc($result)): ?>
+         <input type="radio" name="servicetype_id"  value="<?php echo $item['id']; ?>" <?php if($item['id']==$rs['servicetype_id']){ echo"checked";} ?> /><label> <?php echo $item['service_name'] ?></label>  
+    <?php endwhile; ?>
+  </td>
+</tr>
+<tr>
 	<th>ช่องทางการแจ้ง</th>
     <td>
     	<input type="radio" name="service" value="sys"  checked="checked" /> ระบบ

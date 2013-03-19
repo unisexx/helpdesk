@@ -33,14 +33,12 @@ if($_GET['id']!='')
 <script type="text/javascript" src="../js/print.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/print.css"/>
 </head>
-<body >
-<div id="page">
-<div class="clear"></div>
-<div style="width:800px; height:103px; position:relative;">
+<body onload="window.print();">
+<!-- <div style="width:800px; height:103px; position:relative;">
 <img src="../images/fd_head.gif" />
 <div style="clear:both;"></div>
 <div style="position:absolute; top:44px; right:10px;text-align:right;color:#999">รายงานการบำรุงรักษาโปรแกรม <?php echo Systemname($systemReport['SystemID']) ?><br /> ประจำเดือน <?php echo GetMonthName('full',$mm)?> <?php echo $yy+543 ?> </div>
-</div><!-- img -->
+</div>-->
 <div id="title">รายงานการบำรุงรักษาโปรแกรม <?php echo Systemname($systemReport['SystemID']) ?><br />
 ประจำเดือน <?php echo GetMonthName('full',$mm)?> <?php echo $yy+543 ?>
 
@@ -101,23 +99,17 @@ if($_GET['id']!='')
 </div>
 <p><label>วันที่ตรวจสอบฐานข้อมูล</label><span class="underline"><?=convertDateFromDB($systemReport['SystemDate'.@$i]);?></span></p>
 <p><label>ผู้ตรวจสอบ</label><span class="underline"><?=$systemReport['Examiner'];?></span></p>
-
+<!-- 
 <div class="clear"></div>  
 <div style="width:800px; height:103px; position:absolute;bottom:0px;">
-<img src="../images/fd_foot.gif" width="800"/>
-</div>
-</div>
+<img src="../images/fd_foot.gif" width="800"/> -->
 </body>
 </html>
 <?php
 }else{
 		Alert($alert_export);
 		ReDirect($host."report.php?act=list4",'top');
-	}
-		
-		
-		
-		
+}
 ?>
 
 

@@ -21,13 +21,12 @@
 </head>
 
 <body onload="window.print();">
-<div id="page">
-<div class="clear"></div>
-<div style="width:800px; height:103px; position:relative;">
+<div style="text-align: right;">IT Helpdesk 02-1</div>
+<!-- <div style="width:800px; height:103px; position:relative;">
 <img src="../images/fd_head.gif" width="800" />
 <div style="clear:both;"></div>
 <div style="position:absolute;float:right; top:44px; right:10px;text-align:right;color:#999">รายงานสรุปการรับแจ้งปัญหา <?php echo $_POST['sysname'] .'<br /> ประจำเดือน '.$_POST['s_month']."".$_POST['s_year']?></div>
-</div><!-- img -->
+</div> -->
 <div id="title">รายงานสรุปประเภทปัญหาประจำเดือน  <?php echo $_POST['sysname'] .'<br /> ประจำเดือน '.$_POST['s_month']."".$_POST['s_year']?></div>
 <div>
 <table class="tbfilename">
@@ -69,12 +68,10 @@
 <td></td>
 </tr>
 </table>
-</div>
-<div class="clear"></div>  
+<!-- <div class="clear"></div>  
 <div style="width:800px; height:103px; position:absolute;bottom:0px;">
 <img src="../images/fd_foot.gif" width="800"/>
-</div>
-</div>
+</div> -->
 </body>
 </html>
 <?php
