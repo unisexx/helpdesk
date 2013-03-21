@@ -4,4 +4,5 @@
   // adodb connect
   $db = &ADONewConnection('mysql');
   $db->Connect('localhost','crmsql', 'EpHy2LJvrSHCZ9n7', 'crm_it'); //Connecting to your DBMS.
+  $db->EXECUTE("set names 'utf8'"); 
 ?>

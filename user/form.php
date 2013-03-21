@@ -80,33 +80,29 @@ function trim(stringToTrim)
 		 
   }
 
-		
-  function auto_email()
-  { 	 
-
-	 if($("input[name='NameUser']").val()!="" && $("input[name='lastname']").val()!=""){
-			var name;
-			name=$("#NameUser").val();
-			lastname=$("#lastname").val();
-			res=alpha_chk(name,lastname);
-			if(res=='OK'){			
-				$.ajax({
-					type: 'GET',
-					url: '<?php echo $host ?>user/chk_email.php',
-					data: 'name='+$("#NameUser").val()+'&lastname='+$("#lastname").val()+'&id='+$("#id").val(),							
-					success: function(data){
-						$res=trim(data)+"@m-society.go.th";
-						$('#Email').val($res);
-						
-					}
-				});
-			}else{ alert("กรุณาระบุเป็นภาษาอังกฤษ");}
-			return false;
-		
-		
-
-      } //close if
-   }  //close function 
+  // function auto_email()
+  // { 	 
+	 // if($("input[name='NameUser']").val()!="" && $("input[name='lastname']").val()!=""){
+			// var name;
+			// name=$("#NameUser").val();
+			// lastname=$("#lastname").val();
+			// res=alpha_chk(name,lastname);
+			// if(res=='OK'){			
+				// $.ajax({
+					// type: 'GET',
+					// url: '<?php echo $host ?>user/chk_email.php',
+					// data: 'name='+$("#NameUser").val()+'&lastname='+$("#lastname").val()+'&id='+$("#id").val(),							
+					// success: function(data){
+						// $res=trim(data)+"@m-society.go.th";
+						// $('#Email').val($res);
+// 						
+					// }
+				// });
+			// }else{ alert("กรุณาระบุเป็นภาษาอังกฤษ");}
+			// return false;
+// 
+      // } //close if
+   // }  //close function 
    
 function form_disable(){
 	var form_level='<?php echo $group_form['level'] ?>';
@@ -333,8 +329,8 @@ function CheckForValidate(pUserGroup)
   </td>
 </tr>
 <tr>
-  <th>ชื่อ - นามสกุล (อังกฤษ)<span class="Txt_red_12">*</span></th>
-  <td style="width:300px;"><input name="NameUser" type="text" id="NameUser" value="<?php echo $row['Name'];?>" size="30" > - <input name="lastname" type="text" id="lastname" value="<?php echo @$row['lastname'];?>" size="30" onblur="javascript:auto_email();"/> <img src="images/ajax-refresh-icon.gif"  width="16" height="16" align="absmiddle" onclick="javascript:auto_email();" class="cursor"/></td>
+  <th>ชื่อ - นามสกุล<span class="Txt_red_12">*</span></th>
+  <td style="width:300px;"><input name="NameUser" type="text" id="NameUser" value="<?php echo $row['Name'];?>" size="30" > - <input name="lastname" type="text" id="lastname" value="<?php echo @$row['lastname'];?>" size="30" onblur="javascript:auto_email();"/> <!-- <img src="images/ajax-refresh-icon.gif"  width="16" height="16" align="absmiddle" onclick="javascript:auto_email();" class="cursor"/> --></td>
 
 </tr>
 <tr>
