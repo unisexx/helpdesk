@@ -68,7 +68,7 @@ $(document).ready(function() {
 		}
 
 	?>
-<h3>รายงาน สรุปประเภทปัญหาประจำเดือน</h3>
+<h3>รายงาน สรุปประเภทปัญหาประจำเดือน (IT Helpdesk 02-1)</h3>
 <div id="search">
 <span>
     <form method="post" id="frmsearch" >
@@ -129,10 +129,10 @@ $(document).ready(function() {
   </tr>
   <tr>
     <td>1</td>
-    <td>By App</td>
+    <td>งานปรับปรุงเพิ่มเติมโปรแกรม</td>
     <?php
 
-  	$result=mysql_query("SELECT * from request_lists where systemid='".$sysid."' AND month(new_date)=".$s_month." and year(new_date)='".$s_year."' and problemtype='1'"); 
+  	$result=mysql_query("SELECT * from request_lists where systemid='".$sysid."' AND month(new_date)=".$s_month." and year(new_date)='".$s_year."' and servicetype_id='1'"); 
 	$num=mysql_num_rows($result);  
   	?> 
     <td><?php echo $num ?></td>
@@ -141,10 +141,10 @@ $(document).ready(function() {
   </tr>
   <tr>
     <td>2</td>
-    <td>By User</td>
+    <td>งานแก้ไขข้อผิดพลาด</td>
     <?php
 
-  	$result=mysql_query("SELECT * from request_lists where systemid='".$sysid."' AND month(new_date)=".$s_month." and year(new_date)='".$s_year."' and problemtype='2'"); 
+  	$result=mysql_query("SELECT * from request_lists where systemid='".$sysid."' AND month(new_date)=".$s_month." and year(new_date)='".$s_year."' and servicetype_id='2'"); 
 	$num=mysql_num_rows($result);  
   	?> 
     <td><?php echo $num ?></td>
@@ -153,10 +153,10 @@ $(document).ready(function() {
   </tr>
   <tr>
     <td>3</td>
-    <td>Hardware</td>
+    <td>งานร้องขอ</td>
      <?php
 
-  	$result=mysql_query("SELECT * from request_lists where systemid='".$sysid."' AND month(new_date)=".$s_month." and year(new_date)='".$s_year."' and problemtype='3'"); 
+  	$result=mysql_query("SELECT * from request_lists where systemid='".$sysid."' AND month(new_date)=".$s_month." and year(new_date)='".$s_year."' and servicetype_id='3'"); 
 	$num=mysql_num_rows($result);  
   	?> 
     <td><?php echo $num ?></td>
@@ -165,17 +165,17 @@ $(document).ready(function() {
   </tr>
   <tr>
     <td>4</td>
-    <td>Network</td>
+    <td>งานให้คำแนะนำ</td>
     <?php
 
-  	$result=mysql_query("SELECT * from request_lists where systemid='".$sysid."' AND month(new_date)=".$s_month." and year(new_date)='".$s_year."' and problemtype='4'"); 
+  	$result=mysql_query("SELECT * from request_lists where systemid='".$sysid."' AND month(new_date)=".$s_month." and year(new_date)='".$s_year."' and servicetype_id='4'"); 
 	$num=mysql_num_rows($result);  
   	?>     
     <td><?php echo $num ?></td>
     <input type="hidden" name="list_3" value="<?php echo $num ?>" />
     <td>&nbsp;</td>
   </tr>
-  <tr>
+  <!-- <tr>
     <td>5</td>
     <td>Other</td>
     <?php
@@ -186,7 +186,7 @@ $(document).ready(function() {
     <td><?php echo $num ?></td>
     <input type="hidden" name="list_3" value="<?php echo $num ?>" />
     <td>&nbsp;</td>
-  </tr>
+  </tr> -->
   <tr>
     <td>&nbsp;</td>
     <td class="B">รวม</td>

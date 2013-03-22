@@ -25,7 +25,7 @@ table.report td{text-align:center; padding:5px;}
 <title>Untitled Document</title>
 </head>
 
-<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onload="window.print();">
 <table width="900" border="0" align="center">
   <tr>
     <td align="right">IT Helpdesk 02 </td>

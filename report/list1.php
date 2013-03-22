@@ -99,7 +99,7 @@ $(document).ready(function() {
 		
 
 	?>
-<h3>รายงาน สรุปการรับแจ้งปัญหาประจำเดือน</h3> 
+<h3>รายงาน สรุปการรับแจ้งปัญหาประจำเดือน (IT Helpdesk 02-2)</h3> 
 <div id="search">
 	<span>
     <form method="GET" id="frmsearch" action="report.php?act=list1">
