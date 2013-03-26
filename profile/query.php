@@ -88,8 +88,8 @@
 						break;
 					case "GroupID";
 						$i=$i+1;
-						$name1['groupname']=GetOne("groupname","id",$item['GroupID'],"section");
-						$name2['groupname']=GetOne("groupname","id",$_POST['section'],"section");
+						$name1['groupname']=GetOne("groupname","id",$item['GroupID'],"hd_section");
+						$name2['groupname']=GetOne("groupname","id",$_POST['section'],"hd_section");
 						
 						$detail[$i]="กลุ่ม/ฝ่ายจาก ".$name1['groupname']." เป็น ".$name2['groupname'];
 						break;
