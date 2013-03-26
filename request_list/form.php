@@ -92,17 +92,17 @@ function del(post){
 
 $(document).ready(function() {
 	$("[name=orderid]").fancybox({
-				'width'				: '60%',
-				'height'			: '50%',
-				'transitionIn'		: 'none',
-				'transitionOut'		: 'none',
-				'autoscale' 		:false,
-				'scrolling'			: 'yes',
-				'type'				: 'iframe'
+		'width'				: '90%',
+		'height'			: '90%',
+		'transitionIn'		: 'none',
+		'transitionOut'		: 'none',
+		'autoscale' 		:false,
+		'scrolling'			: 'yes',
+		'type'				: 'iframe'
 	});	
 	$("[name=order]").fancybox({
-		'width'				: '60%',
-		'height'			: '50%',
+		'width'				: '90%',
+		'height'			: '90%',
 		'transitionIn'		: 'none',
 		'transitionOut'		: 'none',
 		'autoscale' 		:false,

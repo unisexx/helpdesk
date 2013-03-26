@@ -44,6 +44,10 @@
 </script>
 </head>
 <body>
+<form method="get">
+	<input type="text" name="name" placeholder="ค้นหาชื่อ หรือนามสกุล" size="30"> <input class="btn" type="submit" value="ค้นหา"/>
+</form>
+
 <table class="tblist">
 <tr>
 	<th>ลำดับ</th>
@@ -72,7 +76,12 @@
 		$sql .=" inner join usergroup d on a.usergroupid=d.id";
 		$sql .=" WHERE a.usertypeid='3' or a.usertypeid='4'";
 	}
-	// echo $sql;
+	
+	if($_GET['name']){
+		$sql .= " and a.name LIKE '%".$_GET['name']."%' or a.lastname LIKE '%".$_GET['name']."%'";
+	}
+	
+	//echo $sql;
 	$result=mysql_query($sql);
 	$i=1;
 	while($item=mysql_fetch_assoc($result)):
