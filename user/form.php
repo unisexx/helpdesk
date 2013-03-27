@@ -179,7 +179,7 @@ $(document).ready(function() {
         email: true
         },
 	  
-       <? if($_GET['id']==''){ ?>
+       <? if(@$_GET['id']==''){ ?>
       Password:
 		{
 			required:true,
@@ -222,7 +222,7 @@ $(document).ready(function() {
       email: "  กรุณากรอก email ให้ถูกต้อง"
       },
 	
-       <? if($_GET['id']==''){ ?>
+       <? if(@$_GET['id']==''){ ?>
       Password:{
 		  required: "กรุณากรอก Password",
 		  minlength:"กรุณากรอกอย่างน้อย 5 ตัวอักษร"
