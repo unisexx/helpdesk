@@ -78,7 +78,7 @@ db_connect();
 						//supeamdin เห็นหมด
 						$sql="select a.* from request_lists a ";
 						// $sql .=" where  systemid in(select b.systemid from informent c left join user_systems b on c.id=b.userid where b.userid='".$_SESSION['id']."')";
-						$sql .=$p_name.$p_system.$p_newdate.$p_status.$p_title;
+						$sql .=' where 1=1 '.$p_name.$p_system.$p_newdate.$p_status.$p_title;
 				}else{
 					//ไม่ใช่ super admin เแสดงมดต ามขอบเขต system	
 					if($item['canaccessall']=="1"){
@@ -107,10 +107,9 @@ db_connect();
                   else
                         $num_pages = ( $num_rows / $per_page ) + 1; 
                 $num_pages = ( int ) $num_pages; 
-                 $sql .= "  ORDER BY a.id DESC  LIMIT $page_start, $per_page"; 
-
-                $result_1 = mysql_query($sql) or die("Invalid query: " . mysql_error()); 
-				// echo $sql;
+                $sql .= "  ORDER BY a.id DESC  LIMIT $page_start, $per_page"; 
+                // echo $sql;
+                $result_1 = mysql_query($sql) or die("Invalid query: " . mysql_error());
 ?>
 
 <span style="font-size:12px;">มีทั้งหมด <?=$num_rows;?> รายการ  / <?=$num_pages;?> หน้า </span><div id="pagenavi" ></div>
