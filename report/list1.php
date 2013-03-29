@@ -214,7 +214,7 @@ $(document).ready(function() {
   <td>&nbsp;</td>
   <td class="B">เรื่องที่ได้รับแจ้งทั้งหมด</td>
    <?php 
-	$result=mysql_query("SELECT * from request_lists where systemid='".$sysid."'"); 
+	$result=mysql_query("SELECT * from request_lists where systemid='".$sysid."' AND month(operation_date)='".$s_month."' and year(operation_date)='".$s_year."'"); 
 	$num=mysql_num_rows($result);  
   ?> 
   <input type="hidden" name="list_4" value="<?php echo $num ?>" />
