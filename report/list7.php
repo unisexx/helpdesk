@@ -41,6 +41,8 @@ $(document).ready(function() {
 <h3>รายงานรายละเอียดงานค้างจากเดือนที่แล้ว (IT Helpdesk 04)</h3> 
 
 <?php  
+ $per_page = 20;
+
  $where =(@$_GET['s_system']!="")?" and systemid='".@$_GET['s_system']."'":"";
  // $where.=(@$_GET['status']!="")? " and status='".@$_GET['status']."'":"";
  if(@$_GET['sdate']=="" && @$_GET['edate']==""){
@@ -165,7 +167,7 @@ $(document).ready(function() {
 <tr>
   <th style="width:100px">ลำดับ</th>
   <th>รายการ</th>
-  <th>สถานะ</th>
+  <!-- <th>สถานะ</th> -->
   <th>วันที่รับแจ้ง</th>
 </tr>
 <?php 
@@ -177,7 +179,7 @@ $i++;
 <tr>
 <td><?php echo $i; ?></td>
 <td><?php echo $item['title']?></td>
-<td><?php echo @GetProblemStatus($item['status'])?></td>
+<!-- <td><?php echo @GetProblemStatus($item['status'])?></td> -->
 <td><?php echo DB2Date($item['new_date'])?></td>
 </tr>
 <?php 

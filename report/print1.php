@@ -61,12 +61,12 @@
   <td><?php echo $_POST['list_3'];?></td>
   <td>&nbsp;</td>
 </tr>
-<tr>
+<!-- <tr>
   <td>&nbsp;</td>
   <td>รวมเรื่องที่ได้รับแจ้งทั้งหมด</td>
   <td><?php echo $_POST['list_4'];?></td>
   <td>&nbsp;</td>
-</tr>
+</tr> -->
 </table>
 </div>
 

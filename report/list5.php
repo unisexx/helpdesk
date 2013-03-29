@@ -41,6 +41,8 @@ $(document).ready(function() {
 <h3>รายงานรายละเอียดแจ้งปัญหาประจำเดือน (IT Helpdesk 03)</h3> 
 
 <?php  
+ $per_page = 20;
+ 
  $where =(@$_GET['s_system']!="")?" and systemid='".@$_GET['s_system']."'":"";
  $where.=(@$_GET['status']!="")? " and status='".@$_GET['status']."'":"";
  if(@$_GET['sdate']=="" && @$_GET['edate']==""){
@@ -165,8 +167,8 @@ $(document).ready(function() {
 <tr>
   <th style="width:100px">ลำดับ</th>
   <th>รายการ</th>
-  <th>สถานะ</th>
   <th>วันที่รับแจ้ง</th>
+  <th>สถานะ</th>
 </tr>
 <?php 
 $i = ($page -1)* $per_page; 
@@ -177,8 +179,8 @@ $i++;
 <tr>
 <td><?php echo $i; ?></td>
 <td><?php echo $item['title']?></td>
-<td><?php echo @GetProblemStatus($item['status'])?></td>
 <td><?php echo DB2Date($item['new_date'])?></td>
+<td><?php echo @GetProblemStatus($item['status'])?></td>
 </tr>
 <?php 
 

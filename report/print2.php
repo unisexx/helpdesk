@@ -68,6 +68,25 @@
 <td></td>
 </tr>
 </table>
+
+<p><label class="headtitle">ข้อเสนอแนะอื่นๆ</label></p>
+<div style="height:400px;">
+<p><span class="botline" style="width:100%"></span></p>
+<p><span class="botline" style="width:100%"></span></p>
+<p><span class="botline" style="width:100%"></span></p>
+<p><span class="botline" style="width:100%"></span></p>
+<p><span class="botline" style="width:100%"></span></p>
+<p><span class="botline" style="width:100%"></span></p>
+<p><span class="botline" style="width:100%"></span></p>
+<p><span class="botline" style="width:100%"></span></p>
+</div>
+<p>
+  <label>ลงชื่อเจ้าหน้าที่ :</label>
+  <span class="underline" style="width:155px;"></span>
+  <label>ลงชื่อผู้ดูแลระบบ</label>
+  <span class="underline" style="width:155px;"></span></p>
+  
+  
 <!-- <div class="clear"></div>  
 <div style="width:800px; height:103px; position:absolute;bottom:0px;">
 <img src="../images/fd_foot.gif" width="800"/>

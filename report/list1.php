@@ -8,14 +8,14 @@ $(document).ready(function() {
 					   
   $("#frmsearch").validate({
     rules: {
-      s_system: "required",
+      // s_system: "required",
 	  s_year: "required",
       s_month: "required"
 	
 
     },
     messages: {
-      s_system: "กรุณาเลือกระบบ", 
+      // s_system: "กรุณาเลือกระบบ", 
       s_year: "  กรุณาเลือกปี",      
       s_month: "  กรุณาเลือกเดือน"
      
@@ -48,7 +48,11 @@ $(document).ready(function() {
 				$item=mysql_fetch_assoc($result);
 				//$sysid=$item['id'];
 				//$_POST['s_system']=$item['id'];
-				return $item['id'];
+				// return $item['id'];
+				$_GET['s_system']=$item['id'];
+				$sysid = $_GET['s_system'] != "" ? " and systemid='".$_GET['s_system']."' " : "" ;
+				return $sysid;
+				
 			}
 			
 			function get_m(){
@@ -89,9 +93,10 @@ $(document).ready(function() {
 			
 			if(@$_GET['s_system']==""){				
 					$_GET['s_system']=get_s();
-					$sysid=$_GET['s_system'];
+					// $sysid=$_GET['s_system'];
 				}else {
-					$sysid=$_GET['s_system'];
+					// $sysid=$_GET['s_system'];
+					$sysid = $_GET['s_system'] != "" ? " and systemid='".$_GET['s_system']."' " : "" ;
 			}
 			
 
@@ -162,7 +167,7 @@ $(document).ready(function() {
   <td>งานค้างจากเดือนที่ผ่านมา</td>
   <?php 
    $m=$s_month-1;
-  $sql1="select * from request_lists where systemid='".$sysid."' AND month(new_date)='$m' and status<>3";
+  $sql1="select * from request_lists where 1=1 ".$sysid." AND month(new_date)='$m' and status<>3";
  // echo $sql1;
   	$result=mysql_query($sql1);
 	$num=mysql_num_rows($result);
@@ -175,7 +180,7 @@ $(document).ready(function() {
   <td>2</td>
   <td>เรื่องที่ได้รับแจ้งทั้งหมดในเดือนนี้</td> 
   <?php
-   $sql2="SELECT * from request_lists where systemid='".$sysid."' AND month(new_date)=".$s_month." and year(new_date)='".$s_year."'";
+   $sql2="SELECT * from request_lists where 1=1 ".$sysid." AND month(new_date)=".$s_month." and year(new_date)='".$s_year."'";
   // echo $sql2;
   	$result=mysql_query($sql2); 
 	$num=mysql_num_rows($result);  
@@ -188,7 +193,7 @@ $(document).ready(function() {
   <td>3</td>
   <td>เรื่องที่ดำเนินการเรียบร้อยแล้วในเดือนนี้</td>
   <?php
-  	$sql3="SELECT * from request_lists where systemid='".$sysid."' AND month(complete_date)='".$s_month."' and year(complete_date)='".$s_year."'";
+  	$sql3="SELECT * from request_lists where 1=1 ".$sysid." AND month(new_date)='".$s_month."' and year(new_date)='".$s_year."' and status = 3";
 	//echo $sql3;
 	$result=mysql_query($sql3); 
 	$num=mysql_num_rows($result);  
@@ -201,7 +206,7 @@ $(document).ready(function() {
   <td>4</td>
   <td>เรื่องที่กำลังดำเนินการ</td>
   <?php
-  	$sql4="SELECT * from request_lists where systemid='".$sysid."' AND month(operation_date)='".$s_month."' and year(operation_date)='".$s_year."' and status=2";
+  	$sql4="SELECT * from request_lists where 1=1 ".$sysid." AND month(operation_date)='".$s_month."' and year(operation_date)='".$s_year."' and status <> 3";
 	//echo $sql4;
 	$result=mysql_query($sql4); 
 	$num=mysql_num_rows($result);  
@@ -210,17 +215,17 @@ $(document).ready(function() {
   <td><?php echo $num ?></td>
   <td>&nbsp;</td>
 </tr>
-<tr>
+<!-- <tr>
   <td>&nbsp;</td>
   <td class="B">เรื่องที่ได้รับแจ้งทั้งหมด</td>
    <?php 
-	$result=mysql_query("SELECT * from request_lists where systemid='".$sysid."' AND month(operation_date)='".$s_month."' and year(operation_date)='".$s_year."'"); 
+	$result=mysql_query("SELECT * from request_lists where 1=1 ".$sysid." AND month(operation_date)='".$s_month."' and year(operation_date)='".$s_year."'"); 
 	$num=mysql_num_rows($result);  
   ?> 
   <input type="hidden" name="list_4" value="<?php echo $num ?>" />
   <td class="B"><?php echo $num ?></td>
   <td>&nbsp;</td>
  
-</tr>
+</tr> -->
 </table>
 </form>
