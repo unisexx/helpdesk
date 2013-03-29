@@ -41,7 +41,7 @@ $(document).ready(function() {
 <h3>รายงานรายละเอียดงานค้างจากเดือนที่แล้ว (IT Helpdesk 04)</h3> 
 
 <?php  
- $per_page = 20;
+ $per_page = 99999;
 
  $where =(@$_GET['s_system']!="")?" and systemid='".@$_GET['s_system']."'":"";
  // $where.=(@$_GET['status']!="")? " and status='".@$_GET['status']."'":"";
