@@ -120,7 +120,7 @@ $pm =new UserLogin();
             	<li><a href="report.php?act=list2">สรุปประเภทปัญหาประจำเดือน (IT Helpdesk 02-1)</a></li>
                 <li><a href="report.php?act=list1">สรุปการรับแจ้งปัญหาประจำเดือน (IT Helpdesk 02-2)</a></li>
                 <li><a href="report.php?act=list5">รายละเอียดแจ้งปัญหาประจำเดือน (IT Helpdesk 03)</a></li>
-                <li><a href="report.php?act=list3">รายงานข้อผิดพลาดของระบบงาน</a></li>
+                <li><a href="report.php?act=list7">รายงานรายละเอียดงานค้างจากเดือนที่แล้ว (IT Helpdesk 04)</a></li>
                 <!-- <li><a href="report.php?act=list4">System & Software</a></li> -->
                 </ul>
             </li>

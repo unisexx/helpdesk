@@ -8,14 +8,14 @@ $(document).ready(function() {
 					   
   $("#frmsearch").validate({
     rules: {
-      s_system: "required",
+      // s_system: "required",
 	  s_year: "required",
       s_month: "required"
 	
 
     },
     messages: {
-      s_system: "กรุณาเลือกระบบ", 
+      // s_system: "กรุณาเลือกระบบ", 
       s_year: "  กรุณาเลือกปี",      
       s_month: "  กรุณาเลือกเดือน"
      
@@ -48,6 +48,7 @@ $(document).ready(function() {
 			$item=mysql_fetch_assoc($result);
 			$sysid=$item['id'];
 			$_POST['s_system']=$item['id'];
+			$sysid = $_POST['s_system'] != "" ? " and systemid='".$_POST['s_system']."' " : "" ;
 	
 			
 			$sql=mysql_query("select month(curdate()) as s_month from dual");
@@ -63,8 +64,7 @@ $(document).ready(function() {
 		}else{
 			$s_month=$_POST['s_month'];
 			$s_year=$_POST['s_year'];
-			$sysid=$_POST['s_system'];
-	
+			$sysid = $_POST['s_system'] != "" ? " and systemid='".$_POST['s_system']."' " : "" ;
 		}
 
 	?>
@@ -132,7 +132,10 @@ $(document).ready(function() {
     <td>งานปรับปรุงเพิ่มเติมโปรแกรม</td>
     <?php
 
-  	$result=mysql_query("SELECT * from request_lists where systemid='".$sysid."' AND month(new_date)=".$s_month." and year(new_date)='".$s_year."' and servicetype_id='1'"); 
+  	$result=mysql_query("SELECT * from request_lists where 1=1 ".$sysid." AND month(new_date)=".$s_month." and year(new_date)='".$s_year."' and servicetype_id='1'"); 
+	
+	// echo "SELECT * from request_lists where 1=1 ".$sysid."' AND month(new_date)=".$s_month." and year(new_date)='".$s_year."' and servicetype_id='1'";
+	
 	$num=mysql_num_rows($result);  
   	?> 
     <td><?php echo $num ?></td>
@@ -144,7 +147,7 @@ $(document).ready(function() {
     <td>งานแก้ไขข้อผิดพลาด</td>
     <?php
 
-  	$result=mysql_query("SELECT * from request_lists where systemid='".$sysid."' AND month(new_date)=".$s_month." and year(new_date)='".$s_year."' and servicetype_id='2'"); 
+  	$result=mysql_query("SELECT * from request_lists where 1=1 ".$sysid." AND month(new_date)=".$s_month." and year(new_date)='".$s_year."' and servicetype_id='2'"); 
 	$num=mysql_num_rows($result);  
   	?> 
     <td><?php echo $num ?></td>
@@ -156,7 +159,7 @@ $(document).ready(function() {
     <td>งานร้องขอ</td>
      <?php
 
-  	$result=mysql_query("SELECT * from request_lists where systemid='".$sysid."' AND month(new_date)=".$s_month." and year(new_date)='".$s_year."' and servicetype_id='3'"); 
+  	$result=mysql_query("SELECT * from request_lists where 1=1 ".$sysid." AND month(new_date)=".$s_month." and year(new_date)='".$s_year."' and servicetype_id='3'"); 
 	$num=mysql_num_rows($result);  
   	?> 
     <td><?php echo $num ?></td>
@@ -168,7 +171,7 @@ $(document).ready(function() {
     <td>งานให้คำแนะนำ</td>
     <?php
 
-  	$result=mysql_query("SELECT * from request_lists where systemid='".$sysid."' AND month(new_date)=".$s_month." and year(new_date)='".$s_year."' and servicetype_id='4'"); 
+  	$result=mysql_query("SELECT * from request_lists where 1=1 ".$sysid." AND month(new_date)=".$s_month." and year(new_date)='".$s_year."' and servicetype_id='4'"); 
 	$num=mysql_num_rows($result);  
   	?>     
     <td><?php echo $num ?></td>
@@ -180,7 +183,7 @@ $(document).ready(function() {
     <td>Other</td>
     <?php
 
-  	$result=mysql_query("SELECT * from request_lists where systemid='".$sysid."' AND month(new_date)=".$s_month." and year(new_date)='".$s_year."' and problemtype='5'"); 
+  	$result=mysql_query("SELECT * from request_lists where 1=1 ".$sysid." AND month(new_date)=".$s_month." and year(new_date)='".$s_year."' and problemtype='5'"); 
 	$num=mysql_num_rows($result);  
   	?>     
     <td><?php echo $num ?></td>
@@ -191,7 +194,7 @@ $(document).ready(function() {
     <td>&nbsp;</td>
     <td class="B">รวม</td>
     <?php
-  	$result=mysql_query("SELECT * from request_lists where systemid='".$sysid."' AND month(new_date)=".$s_month." and year(new_date)='".$s_year."'"); 
+  	$result=mysql_query("SELECT * from request_lists where 1=1 ".$sysid." AND month(new_date)=".$s_month." and year(new_date)='".$s_year."'"); 
 	$num=mysql_num_rows($result);  
   	?> 
     <td class="B"><?php echo $num ?></td>

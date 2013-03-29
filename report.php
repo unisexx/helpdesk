@@ -79,6 +79,9 @@
 			case 'list6':
 				include "report/list6.php";
 			break;
+			case 'list7':
+				include "report/list7.php";
+			break;
 			case 'form4':
 					include "report/form4.php";
 			break;

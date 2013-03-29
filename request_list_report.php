@@ -58,16 +58,11 @@ $service = array('tel'=>'โทรศัพท์','sys'=>'ระบบ','email'
       <tr>
         <td><table width="100%" border="0" cellpadding="3" cellspacing="3">
           <tr>
-            <td><p>ระบุประเภทปัญหา สาเหตุ <span class="fill"><?php echo $req['ProblemName']?></span></p>
-              <p>วันที่ดำเนินการ <span class="fill"><?php echo DB2Date($req['operation_date'])?></span> </p>
-              <p>รายละเอียดการดำเนินงาน </p>
-              <p><span class="fill"><?php echo $req['operation_detail']?></span></p>
-              <p>ผลการดำเนินการ</p>
-              <p><span class="fill"><?php echo $req['result']?></span></p>
-              <p>ผลการทดสอบ</p>
-              <p><span class="fill"><?php echo $req['test']?></span></p>
-              <p>ข้อเสนอแนะในการนำไปสู่การแก้ปัญหาในอนาคต</p>
-              <p><span class="fill"><?php echo $req['future']?></span></p></td>
+            <td><p>ระบุประเภทปัญหา สาเหตุ <span class="fill"><?php echo $req['ProblemName']?></span> วันที่ดำเนินการ <span class="fill"><?php echo DB2Date($req['operation_date'])?></span> </p>
+              <p>รายละเอียดการดำเนินงาน <span class="fill"><?php echo $req['operation_detail']?></span></p>
+              <p>ผลการดำเนินการ <span class="fill"><?php echo $req['result']?></span></p>
+              <p>ผลการทดสอบ <span class="fill"><?php echo $req['test']?></span></p>
+              <p>ข้อเสนอแนะในการนำไปสู่การแก้ปัญหาในอนาคต <span class="fill"><?php echo $req['future']?></span></p></td>
           </tr>
         </table></td>
       </tr>

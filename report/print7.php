@@ -28,14 +28,14 @@ $_POST['edate']=($_POST['edate'] != "")? " ถึง ".$_POST['edate']:"";
 $_POST['sdate']=($_POST['sdate'] != "")? " วันที่ " .$_POST['sdate']:"";
 
 ?>
-<div style="text-align: right;">IT Helpdesk 03</div>
+<div style="text-align: right;">IT Helpdesk 04</div>
 <!-- <div style="width:800px; height:103px; position:relative;">
 <img src="../images/fd_head.gif" />
 <div style="clear:both;"></div>
 <div style="position:absolute; top:44px; right:100px;text-align:right;color:#999">รายงานรายละเอียดการรับแจ้งปัญหา <?php echo $sysname .'<br /> '.$_POST['sdate'].$_POST['edate']?></div>
 </div>  -->
 <div id="title">
-รายงานรายละเอียดการรับแจ้งปัญหา <?php echo $sysname .'<br /> '.$_POST['sdate'].$_POST['edate']?></div>
+รายงานรายละเอียดงานค้างจากเดือนที่แล้ว <?php echo $sysname .'<br /> '.$_POST['sdate'].$_POST['edate']?></div>
 <p><label class="headtitle">สรุปการรับแจ้งปัญหา</label></p>
 <table class="tbfilename">
 <tr>

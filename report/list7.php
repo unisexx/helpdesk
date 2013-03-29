@@ -38,11 +38,11 @@ $(document).ready(function() {
 <?php 
   db_connect();
 ?>
-<h3>รายงานรายละเอียดแจ้งปัญหาประจำเดือน (IT Helpdesk 03)</h3> 
+<h3>รายงานรายละเอียดงานค้างจากเดือนที่แล้ว (IT Helpdesk 04)</h3> 
 
 <?php  
  $where =(@$_GET['s_system']!="")?" and systemid='".@$_GET['s_system']."'":"";
- $where.=(@$_GET['status']!="")? " and status='".@$_GET['status']."'":"";
+ // $where.=(@$_GET['status']!="")? " and status='".@$_GET['status']."'":"";
  if(@$_GET['sdate']=="" && @$_GET['edate']==""){
  	$where.="";
  }else if(@$_GET['sdate']!="" || @$_GET['edate']!=""){
@@ -56,7 +56,7 @@ $(document).ready(function() {
 	}
  }
 
- $sql="select * from request_lists where 1=1 ".$where;
+ $sql="select * from request_lists where 1=1 and status <> 3 ".$where;
  //echo $sql;
 
  $i=1;
@@ -78,7 +78,7 @@ $(document).ready(function() {
                         $num_pages = ( $num_rows / $per_page ) + 1; 
                 $num_pages = ( int ) $num_pages; 
                  $sql.= "  ORDER BY id DESC  LIMIT $page_start, $per_page"; 
-				//echo $sql;
+				// echo $sql;
                 $result_1 = mysql_query($sql) or die("Invalid query: " . mysql_error()); 
 	
 
@@ -107,7 +107,7 @@ $(document).ready(function() {
 			
 					url=url+'&page='+page;											   
 			<?php }else{ ?>
-					url=url+'?act=list5&page='+page;
+					url=url+'?act=list7&page='+page;
 		   <?php } ?>               
                                                             $(location).attr('href',url);
                                                           }
@@ -115,7 +115,7 @@ $(document).ready(function() {
                     </script>  
 <div id="search">
 
-    <form method="GET" id="frmsearch" action="report.php?act=list5">
+    <form method="GET" id="frmsearch" action="report.php?act=list7">
 	<span>
       <select name="s_system">
         <option value="">เลือกระบบงาน</option>
@@ -130,7 +130,7 @@ $(document).ready(function() {
         <option value="<?php echo $item['id'] ?>" <?php echo ($item['id']==@$_GET['s_system'])?"selected":"";?> ><?php echo $item['system']; ?></option> 
         <? endwhile; ?>  
       </select>
-      <select name="status">
+      <!-- <select name="status">
       	<option value="">เลือกสถานะ</option>
         <?php 
 			$sql1="SELECT * FROM problemstatus";
@@ -139,17 +139,17 @@ $(document).ready(function() {
 		?>
         	<option value="<?php echo $i_status['id']?>" <?php  echo ($i_status['id']==@$_GET['status'])?"selected":"" ?>><?php echo $i_status['name'] ?></option>
         <?php endwhile; ?>
-      </select>
+      </select> -->
       วันที่ <input type="text" name="sdate" class="datepicker" value="<?php echo @$_GET['sdate'] ?>" />
 	  ถึง <input  type="text"  name="edate" class="datepicker"  value="<?php echo @$_GET['edate'] ?>"/>
 	  
-	   <input type="hidden" name="act" value="list5" />
+	   <input type="hidden" name="act" value="list7" />
 	   <input name="search" type="submit" value="search" class="btn_search" />
 	  </span>
 	  </form>
 </div>
 
-<form action="report/print5.php?chk_export=<?php echo $item_10['CanExport']?> " method="post" id="frmexport" target="_blank">
+<form action="report/print7.php?chk_export=<?php echo $item_10['CanExport']?> " method="post" id="frmexport" target="_blank">
 <div id="btnBox"><input type="submit" value="พิมพ์รายงาน"  class="btn_print" /></div>
 <div id="titleReport">
 	<?php 
@@ -189,5 +189,5 @@ $i++;
 <input type="hidden" name="edate" 		value="<?php echo @$_GET['edate'] ?>" ? />
 <input type="hidden" name="sql"			value="<?php echo $sql ?>" />
 <input type="hidden" name="no"			value="<?php echo ($page -1)* $per_page; ?>" />
-<input type="hidden" name="list"        value="list5" />
+<input type="hidden" name="list"        value="list7" />
 </form>
