@@ -114,8 +114,8 @@ $(document).ready(function() {
 
 <form  method="post" action="report/print2.php?chk_export=<?php echo $item_10['CanExport']?> " target="_blank">
 <div id="btnBox"><input type="submit" value="พิมพ์รายงาน"  class="btn_print" /></div>
-<div id="titleReport"><?php echo Systemname(@$sysid)." ประจำเดือน".GetMonthName('full',@$s_month)." ปี ".@$s_year_th=@$s_year+543; ?></div>
-<input type="hidden" name="sysname" 	value="<?php echo Systemname(@$sysid)?>" />
+<div id="titleReport"><?php echo Systemname(@$_POST['s_system'])." ประจำเดือน".GetMonthName('full',@$s_month)." ปี ".@$s_year_th=@$s_year+543; ?></div>
+<input type="hidden" name="sysname" 	value="<?php echo Systemname(@$_POST['s_system'])?>" />
 <input type="hidden" name="s_month" 	value="<?php echo GetMonthName('full',@$s_month)?>" />
 <input type="hidden" name="s_year" 		value="<?php echo $s_year_th ?>" />
 <input type="hidden" name="list"        value="list2" />

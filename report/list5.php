@@ -79,7 +79,7 @@ $(document).ready(function() {
                   else
                         $num_pages = ( $num_rows / $per_page ) + 1; 
                 $num_pages = ( int ) $num_pages; 
-                 $sql.= "  ORDER BY id DESC  LIMIT $page_start, $per_page"; 
+                 $sql.= "  ORDER BY new_date asc  LIMIT $page_start, $per_page"; 
 				//echo $sql;
                 $result_1 = mysql_query($sql) or die("Invalid query: " . mysql_error()); 
 	

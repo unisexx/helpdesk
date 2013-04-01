@@ -41,7 +41,7 @@ $_POST['sdate']=($_POST['sdate'] != "")? " วันที่ " .$_POST['sdate']
 <tr>
 <th>ลำดับ</th>
 <th style="text-align:center">รายการ</th>
-<th style="width:100px;">สถานะ</th>
+<!-- <th style="width:100px;">สถานะ</th> -->
 <th>วันที่รับแจ้ง</th>
 <th>หมายเหตุ</th>
 </tr>
@@ -61,7 +61,7 @@ $_POST['sdate']=($_POST['sdate'] != "")? " วันที่ " .$_POST['sdate']
 <tr>
 <td><?php echo $i ?></td>
 <td><?php echo $item['title'] ?></td>
-<td><?php echo GetProblemStatus($item['status']) ?></td>
+<!-- <td><?php echo GetProblemStatus($item['status']) ?></td> -->
 <td><?php echo DB2Date($item['new_date']) ?></td>
 <td>&nbsp;</td>
 </tr>

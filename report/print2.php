@@ -27,7 +27,7 @@
 <div style="clear:both;"></div>
 <div style="position:absolute;float:right; top:44px; right:10px;text-align:right;color:#999">รายงานสรุปการรับแจ้งปัญหา <?php echo $_POST['sysname'] .'<br /> ประจำเดือน '.$_POST['s_month']."".$_POST['s_year']?></div>
 </div> -->
-<div id="title">รายงานสรุปประเภทปัญหาประจำเดือน  <?php echo $_POST['sysname'] .'<br /> ประจำเดือน '.$_POST['s_month']."".$_POST['s_year']?></div>
+<div id="title">รายงานสรุปประเภทปัญหา  <?php echo $_POST['sysname'] .'<br /> ประจำเดือน '.$_POST['s_month']."".$_POST['s_year']?></div>
 <div>
 <table class="tbfilename">
 <tr>
@@ -38,26 +38,26 @@
 </tr>
 <tr>
 <td height="41">1</td>
-<td>งานแก้ไขข้อผิดพลาด</td>
+<td>งานปรับปรุงเพิ่มเติมโปรแกรม</td>
 <td><?php echo $_POST['list_0'];?></td>
 <td></td>
 
 </tr>
 <tr>
 <td>2</td>
-<td>งานปรับปรุงเพิ่มเติม</td>
+<td>งานแก้ไขข้อผิดพลาด</td>
 <td><?php echo $_POST['list_1'];?></td>
 <td></td>
 </tr>
 <tr>
 <td>3</td>
-<td>งานให้คำแนะนำ</td>
+<td>งานร้องขอ</td>
 <td><?php echo $_POST['list_2'];?></td>
 <td></td>
 </tr>
 <tr>
 <td>4</td>
-<td>งานอื่นๆ</td>
+<td>งานให้คำแนะนำ</td>
 <td><?php echo $_POST['list_3'];?></td>
 <td></td> 
 </tr>
