@@ -3,10 +3,58 @@ include ('include/adodb_connect.php');
 include ('include/function.php');
 //$db->debug = true;
 $db->EXECUTE("set names 'utf8'");
-$req = $db->GetRow('select request_lists.*,informent.Name,informent.lastname,informent.tel,informent.email,department.DeptName,
+$req = $db->GetRow('SELECT
+request_lists.id,
+request_lists.`code`,
+request_lists.problemtype,
+request_lists.title,
+request_lists.`status`,
+request_lists.chk_send,
+request_lists.system_note,
+request_lists.response_note,
+request_lists.coordinator_note,
+request_lists.send_note,
+request_lists.active_date,
+request_lists.send_date,
+request_lists.new_date,
+request_lists.operation_date,
+request_lists.complete_date,
+request_lists.systemid,
+request_lists.orderid,
+request_lists.responsibleid,
+request_lists.coordinatorid,
+request_lists.ownid,
+request_lists.service,
+request_lists.system_success,
+request_lists.response_success,
+request_lists.operation_detail,
+request_lists.result,
+request_lists.test,
+request_lists.future,
+request_lists.admin_id,
+request_lists.rso_name,
+request_lists.rso_date,
+request_lists.rso_channel,
+request_lists.servicetype_id,
+informent.`Name`,
+informent.lastname,
+informent.Tel,
+informent.Email,
+department.DeptName,
 system.SystemName,
-problemstatus.name as statusname,
-problemtype.ProblemName from request_lists LEFT JOIN informent ON request_lists.orderid = informent.ID LEFT JOIN department ON informent.DepartmentID = department.ID LEFT JOIN system ON request_lists.systemid = system.ID LEFT JOIN problemstatus ON request_lists.status = problemstatus.id LEFT JOIN problemtype ON request_lists.problemtype = problemtype.ID where request_lists.id = '.$_GET['id']);
+problemstatus.`name` AS statusname,
+problemtype.ProblemName,
+informent.GroupID,
+hd_section.GroupName
+FROM
+request_lists
+LEFT JOIN informent ON request_lists.orderid = informent.ID
+LEFT JOIN department ON informent.DepartmentID = department.ID
+LEFT JOIN system ON request_lists.systemid = system.ID
+LEFT JOIN problemstatus ON request_lists.`status` = problemstatus.id
+LEFT JOIN problemtype ON request_lists.problemtype = problemtype.ID
+LEFT JOIN hd_section ON informent.GroupID = hd_section.ID
+where request_lists.id = '.$_GET['id']);
 $details = $db->GetAll('select * from request_list_details where title_id = '.$_GET['id']);
 $service = array('tel'=>'โทรศัพท์','sys'=>'ระบบ','email'=>'อีเมล์','other'=>'อื่นๆ');
 ?>
@@ -41,7 +89,7 @@ $service = array('tel'=>'โทรศัพท์','sys'=>'ระบบ','email'
 	              <?php endforeach;?>
               <?php endif;?>
               <p>ชื่อผู้แจ้ง <span class="fill"><?php echo $req['Name']?> <?php echo $req['lastname']?></span> 
-              	หน่วยงาน <span class="fill"><?php echo $req['DeptName']?></span> 
+              	หน่วยงาน <span class="fill"><?php echo $req['GroupName']?></span> 
               	<?php echo ($req['tel'])?'โทรศัพท์ติดต่อ <span class="fill">'.$req['tel'].'</span>':'';?>
               	E-mail <span class="fill"><?php echo $req['email']?></span></p>
               </td>
