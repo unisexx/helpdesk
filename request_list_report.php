@@ -90,8 +90,8 @@ $service = array('tel'=>'โทรศัพท์','sys'=>'ระบบ','email'
               <?php endif;?>
               <p>ชื่อผู้แจ้ง <span class="fill"><?php echo $req['Name']?> <?php echo $req['lastname']?></span> 
               	หน่วยงาน <span class="fill"><?php echo $req['GroupName']?></span> 
-              	<?php echo ($req['tel'])?'โทรศัพท์ติดต่อ <span class="fill">'.$req['tel'].'</span>':'';?>
-              	E-mail <span class="fill"><?php echo $req['email']?></span></p>
+              	<?php echo ($req['Tel'])?'โทรศัพท์ติดต่อ <span class="fill">'.$req['Tel'].'</span>':'';?>
+              	E-mail <span class="fill"><?php echo $req['Email']?></span></p>
               </td>
           </tr>
         </table></td>
