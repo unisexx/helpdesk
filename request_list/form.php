@@ -475,7 +475,11 @@ if(@$_GET['id']!=""){
 <tr> 
   <th>ชื่อผู้แจ้ง  <span class="Txt_red_12">*</span></th>
   <td>
-  <?php if($rs['orderid']!=0 || $rs['orderid']!="" ):?>
+  <input name="n_orderid" type="text" id="n_orderid" size="40" value="<?php  $name=GetUser($rs['orderid'],'order'); echo $name['name']?>" onclick='$("a[name=orderid]").trigger("click");' />
+         <a name="orderid"  class="a_search" href="request_list/order_search.php?total=total"></a>
+        <input type="hidden" name="orderid" value="<?php echo $rs['orderid']?>" />
+
+  <!--<?php if($rs['orderid']!=0 || $rs['orderid']!="" ):?>
  	 	<?php  $name=GetUser($rs['orderid'],'order'); echo $name['name']?>
         <input type="hidden" name="orderid" value="<?php echo $rs['orderid']?>" />
 
@@ -484,7 +488,7 @@ if(@$_GET['id']!=""){
         <input name="n_orderid" type="text" id="n_orderid" size="40" onclick='$("a[name=orderid]").trigger("click");' />
          <a name="orderid"  class="a_search" href="request_list/order_search.php?total=total"></a>
         <input type="hidden" name="orderid"  />
-  <?php endif;?>
+  <?php endif;?>-->
 
   </td>
 <!-- <tr>
