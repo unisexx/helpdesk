@@ -227,15 +227,19 @@ if(@$_POST['id']==""){
 				break;
 			case "3":  
 			//เจ้าของระบบ
-				$val="'".$_POST['problemtype']."','".$_POST['title']."','".$_POST['status']."',''";						
+				$val  ="'".$_POST['problemtype']."','".$_POST['title']."','".$_POST['status']."',''";						
 				$val .=",''";
 				$val .=",'".$_POST['new_date']."','',''";
-				$val .=",'".$_POST['orderid']."','','','".$_POST['systemid']."','".$_POST['service']."'";
+				$val .=",'".$_POST['orderid']."','','','".$_POST['systemid']."','".@$_POST['service']."'";
 				$val .=",'".$_POST['code']."','',''";
 				$val .=",'".@$_POST['system_success']."','".@$_POST['response_success']."','".$_POST['ownid']."'";
+				$val .=",'','','','','','','','',''";
 				break;
 		}
-	
+		
+			// echo $field."<br>";
+			// echo $val;
+			
 			// echo "INSERT INTO request_lists(".$field.") VALUES(".$val.")";
 			mysql_query("LOCK TABLES request_lists WRITE"); 
 			mysql_query("SET AUTOCOMMIT = 0");	

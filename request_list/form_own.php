@@ -216,7 +216,7 @@ if (isset($_GET['id']))
 	
 }
  ?>
-<form id="frmedit" action="request_list/save.php"  method="post" enctype="multipart/form-data">
+<form id="frmedit" action="request_list.php?act=save"  method="post" enctype="multipart/form-data">
 <input type="hidden" name="sess_id" value="<?php echo $_SESSION["id"] ?>" />
 <table class="tbadd">
 <tr>
