@@ -5,7 +5,8 @@
 	  // include "../include/class_userlogin.php";
 	  $list=new UserLogin();
 	  // db_connect();
-$path="../uploads/file/";	
+$path = realpath(__DIR__ . "/..")."/uploads/file/";
+
 // set notifybar
  $_SESSION["show"]="show";
  if(@$_GET['act']=="delete"){
@@ -371,7 +372,7 @@ else{
 		   $arr = (Date("dmy_His").$i.$sur); //เป็น วันที่_เวลา.นามสกุล		
 	   }
 	   
-	   	//var_dump($arr);exit;
+	   	// var_dump($arr);exit;
 		$sql="UPDATE request_list_details SET fileatth='".$arr."',title_id=".$_POST['id']." WHERE id=".$insert_id;				
 	    // upload file
 		
@@ -386,17 +387,13 @@ else{
 				//exit;
 				}
 			  else
-				{						
-						if (file_exists($path.@$_FILES["fileatth".$i]["name"])) 
-						{
-
-							unlink ($path.@$_FILES["fileatth".$i]["name"]);
-						}else{
-	
-							move_uploaded_file(@$_FILES["fileatth".$i]["tmp_name"],$path.@$arr);
-												
-							
-						}
+				{
+					if (file_exists($path.@$_FILES["fileatth".$i]["name"])) 
+					{
+						unlink ($path.@$_FILES["fileatth".$i]["name"]);
+					}else{
+						move_uploaded_file(@$_FILES["fileatth".$i]["tmp_name"],$path.@$arr);
+					}
 				}
 			}//close if isset
 		mysql_query($sql) or die("Error 3: ".mysql_error());				
