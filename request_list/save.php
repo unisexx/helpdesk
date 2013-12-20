@@ -262,8 +262,7 @@ if(@$_POST['id']==""){
 		mysql_query($sql) or die("Error 2 : ".mysql_error());
 	
 
-		
-	   $path="../uploads/file/";	
+			
 		// upload file
 		//var_dump(isset($_FILES['fileatth'.$i]));exit;
 		 if(isset($_FILES['fileatth'.$i]) || $_FILES['fileatth'.$i]['name']!=""){
